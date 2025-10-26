@@ -1,0 +1,64 @@
+{
+  "gallery": [
+    {
+      "id": "1",
+      "title": "Pelatihan Safety di Pelabuhan",
+      "description": "Para ABK mengikuti pelatihan safety dan prosedur keselamatan kerja di laut",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+      "category": "Pelatihan",
+      "date": "2024-01-15",
+      "alt": "Pelatihan Safety ABK"
+    },
+    {
+      "id": "2",
+      "title": "Kapal Kontainer Modern",
+      "description": "Kapal kontainer terbaru armada kerja sama internasional",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+      "category": "Armada",
+      "date": "2024-01-10",
+      "alt": "Kapal Kontainer"
+    },
+    {
+      "id": "3",
+      "title": "Sertifikasi STCW",
+      "description": "Peserta sukses melewati ujian sertifikasi internasional",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+      "category": "Sertifikasi",
+      "date": "2024-01-05",
+      "alt": "Sertifikasi STCW"
+    },
+    {
+      "id": "4",
+      "title": "Simulasi Keadaan Darurat",
+      "description": "Simulasi drill keadaan darurat di kapal",
+      "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop",
+      "category": "Pelatihan",
+      "date": "2023-12-28",
+      "alt": "Simulasi Darurat"
+    }
+  ],
+  "company": {
+    "name": "PT. Duta Samudera Bahari",
+    "description": "Perusahaan terkempin dalam pemberangkatan Anak Buah Kapal dengan standar internasional tertinggi.",
+    "email": "info@dutasam.com",
+    "phone": "+62 (0)21-XXX-XXXX",
+    "address": "Jakarta, Indonesia",
+    "website": "https://dutasam.com",
+    "founded": 2010,
+    "employees": 150,
+    "visionMission": {
+      "vision": "Menjadi perusahaan pemberangkatan ABK terpercaya dan profesional dengan standar internasional.",
+      "mission": [
+        "Menyediakan layanan rekrutmen dan penempatan ABK berkualitas tinggi",
+        "Memastikan kesejahteraan dan perlindungan ABK sesuai hukum internasional",
+        "Bermitra dengan shipping companies terkemuka di seluruh dunia",
+        "Mengembangkan SDM maritim yang kompeten dan profesional"
+      ]
+    },
+    "socialMedia": {
+      "facebook": "https://facebook.com/dutasam",
+      "instagram": "https://instagram.com/dutasam",
+      "linkedin": "https://linkedin.com/company/dutasam"
+    }
+  }
+}
