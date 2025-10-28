@@ -109,6 +109,47 @@ export function updateCompanyProfile(
   return updated;
 }
 
+// Navigation functions
+export function getNavigation() {
+  const data = readAllData();
+  return data.navigation || [];
+}
+
+// Services functions
+export function getServices() {
+  const data = readAllData();
+  return data.services || [];
+}
+
+// News functions
+export function getNews() {
+  const data = readAllData();
+  return data.news || [];
+}
+
+export function getNewsPost(id: string) {
+  const posts = getNews();
+  return posts.find((post: NewsPost) => post.id === id) || null;
+}
+
+// SEO functions
+export function getSEOData() {
+  const data = readAllData();
+  return data.seo || {};
+}
+
+// News categories
+export function getNewsCategories() {
+  const data = readAllData();
+  return data.newsCategories || [];
+}
+
+// Services page data
+export function getServicesPageData() {
+  const data = readAllData();
+  return data.servicesPage || {};
+}
+
 // Helper function to save data
 function saveData(updates: any) {
   const data = readAllData();

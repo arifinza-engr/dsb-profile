@@ -1,117 +1,16 @@
 import { Metadata } from "next";
-import { HeroSection } from "@/components/sections/HeroSection";
 import { GalleryCard } from "@/components/sections/GalleryCard";
+import { getGalleryItems } from "@/lib/cms";
 import Link from "next/link";
-import { Filter } from "lucide-react";
+import { Filter, Image } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Galeri - PT. Duta Samudera Bahari",
   description: "Dokumentasi kegiatan, pelatihan, dan pengalaman ABK kami",
 };
 
-export default function GalleryPage() {
-  // Sample gallery data
-  const galleryItems = [
-    {
-      id: "1",
-      title: "Pelatihan STCW di Simulator Kapal",
-      description:
-        "Para peserta pelatihan menjalankan simulasi navigasi kapal di fasilitas modern kami",
-      image:
-        "https://images.unsplash.com/photo-1753526372680-7d368f2f068e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVsYXV0JTIwaW5kb25lc2lhfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
-      category: "Pelatihan",
-      alt: "Pelatihan STCW",
-      date: "2024-01-15",
-    },
-    {
-      id: "2",
-      title: "Penempatan ABK di Kapal Tanker",
-      description:
-        "ABK lulusan kami bersiap di atas kapal tanker minyak untuk pelayaran internasional",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-      category: "Penempatan",
-      alt: "Penempatan ABK",
-      date: "2024-01-10",
-    },
-    {
-      id: "3",
-      title: "Workshop Keselamatan Kerja",
-      description:
-        "Peserta mengikuti workshop intensif tentang prosedur keselamatan maritim terkini",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-      category: "Workshop",
-      alt: "Workshop Keselamatan",
-      date: "2024-01-08",
-    },
-    {
-      id: "4",
-      title: "Sertifikasi Internasional",
-      description:
-        "Peserta menerima sertifikat STCW dan IMO setelah lulus ujian komprehensif",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-      category: "Sertifikasi",
-      alt: "Sertifikasi",
-      date: "2024-01-05",
-    },
-    {
-      id: "5",
-      title: "Event Networking Maritim",
-      description:
-        "Gathering ABK, calon ABK, dan profesional maritim untuk networking dan knowledge sharing",
-      image:
-        "https://images.unsplash.com/photo-1587355794919-a5ee00b7f563?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVsYXV0JTIwaW5kb25lc2lhfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
-      category: "Event",
-      alt: "Event Networking",
-      date: "2024-01-01",
-    },
-    {
-      id: "6",
-      title: "Fasilitas Pelatihan Modern",
-      description:
-        "Laboratorium dan simulator kami dilengkapi dengan teknologi terkini untuk pembelajaran optimal",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-      category: "Fasilitas",
-      alt: "Fasilitas",
-      date: "2023-12-28",
-    },
-    {
-      id: "7",
-      title: "Program Mentoring One-on-One",
-      description:
-        "Mentor berpengalaman memberikan panduan karir langsung kepada peserta pelatihan",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-      category: "Mentoring",
-      alt: "Mentoring",
-      date: "2023-12-25",
-    },
-    {
-      id: "8",
-      title: "Kunjungan ke Pelabuhan Internasional",
-      description:
-        "Peserta mengunjungi pelabuhan untuk belajar langsung tentang operasi logistik dan pelayaran",
-      image:
-        "https://images.unsplash.com/photo-1683029638112-897a5f8da5d1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBlbGF1dCUyMGluZG9uZXNpYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600",
-      category: "Study Tour",
-      alt: "Study Tour",
-      date: "2023-12-20",
-    },
-    {
-      id: "9",
-      title: "Upacara Kelulusan 2023",
-      description:
-        "Para lulusan program pelatihan menerima ijazah dan siap memulai karir maritim mereka",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-      category: "Event",
-      alt: "Upacara Kelulusan",
-      date: "2023-12-15",
-    },
-  ];
+export default async function GalleryPage() {
+  const galleryItems = await getGalleryItems();
 
   const categories = [
     { name: "Semua", value: "all", count: galleryItems.length },
@@ -124,19 +23,18 @@ export default function GalleryPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <HeroSection
-        title="Galeri Kegiatan Kami"
-        subtitle="Dokumentasi Program Pelatihan & Penempatan"
-        description="Lihat dokumentasi lengkap kegiatan, pelatihan, dan perjalanan karir ABK kami"
-        ctaText="Hubungi Kami"
-        ctaHref="/contact"
-        secondaryCtaText="Kembali ke Beranda"
-        secondaryCtaHref="/"
-      />
+      {/* Header Section */}
+      {/* <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800"></section> */}
 
       {/* Gallery Section */}
       <section className="py-20 bg-white dark:bg-slate-900">
+        <div className="container-maritime text-center mb-20">
+          <h1 className="text-4xl font-bold text-foreground mb-4">Galeri</h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-0">
+            Dokumentasi kegiatan, pelatihan, dan pengalaman ABK kami
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
+        </div>
         <div className="container-maritime">
           {/* Category Filter */}
           <div className="mb-12">

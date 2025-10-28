@@ -1,8 +1,7 @@
 import { Metadata } from "next";
-import { HeroSection } from "@/components/sections/HeroSection";
 import { NewsCard } from "@/components/sections/NewsCard";
 import Link from "next/link";
-import { Search, ArrowRight } from "lucide-react";
+import { Search, ArrowRight, Newspaper } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 
 export const metadata: Metadata = {
@@ -125,20 +124,30 @@ export default function NewsPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <HeroSection
-        title="Berita & Blog Maritim"
-        subtitle="Informasi Terkini"
-        description="Tetap update dengan berita terbaru, tips karir, dan artikel industri maritim internasional"
-        ctaText="Hubungi Kami"
-        ctaHref="/contact"
-        secondaryCtaText="Kembali ke Beranda"
-        secondaryCtaHref="/"
-      />
+      {/* Header Section */}
+      {/* <section className="py-20 bg-white dark:bg-slate-900 mb-0">
+        <div className="container-maritime text-center">
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Berita & Blog
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-0">
+            Berita terbaru, tips karir, dan artikel industri maritim
+          </p>
+        </div>
+      </section> */}
 
       {/* Main Content */}
       <section className="py-20 bg-white dark:bg-slate-900">
         <div className="container-maritime">
+          <div className="container-maritime text-center mb-10">
+            <h1 className="text-4xl font-bold text-foreground mb-4">
+              Berita & Blog
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-0">
+              Berita terbaru, tips karir, dan artikel industri maritim
+            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
+          </div>
           {/* Search Section */}
           <div className="mb-12">
             <div className="relative max-w-2xl mx-auto">

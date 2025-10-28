@@ -1,14 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { MapPin, Phone, Mail } from "lucide-react";
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Facebook,
-  Instagram,
-  Linkedin,
-} from "lucide-react";
+  FaFacebookF,
+  FaInstagram,
+  FaXTwitter,
+  FaTiktok,
+} from "react-icons/fa6";
 import {
   COMPANY_NAME,
+  COMPANY_LOGO,
   COMPANY_EMAIL,
   COMPANY_PHONE,
   COMPANY_ADDRESS,
@@ -19,16 +21,18 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 dark:bg-slate-950 text-white mt-20">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white">
       <div className="container-maritime py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-300 rounded-lg flex items-center justify-center">
-                <span className="text-slate-900 font-bold">⚓</span>
-              </div>
+              <img
+                src={COMPANY_LOGO}
+                alt={`${COMPANY_NAME} Logo`}
+                className="w-8 h-8 rounded-lg object-cover"
+              />
               <h3 className="font-bold text-lg">{COMPANY_NAME}</h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -38,21 +42,27 @@ export function Footer() {
             <div className="flex gap-3">
               <a
                 href="#"
-                className="w-9 h-9 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-9 h-9 bg-pink-600 hover:bg-pink-700 rounded-lg flex items-center justify-center transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
                 className="w-9 h-9 bg-blue-700 hover:bg-blue-800 rounded-lg flex items-center justify-center transition-colors"
               >
-                <Linkedin className="w-5 h-5" />
+                <FaFacebookF className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-9 h-9 bg-pink-500 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-9 h-9 bg-black hover:bg-gray-900 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <FaXTwitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="w-9 h-9 bg-black hover:bg-gray-900 rounded-lg flex items-center justify-center transition-colors"
+              >
+                <FaTiktok className="w-5 h-5 text-white" />
               </a>
             </div>
           </div>

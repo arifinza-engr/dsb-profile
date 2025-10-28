@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Anchor } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface HeroSectionProps {
   title: string;
@@ -11,7 +12,8 @@ interface HeroSectionProps {
   ctaHref?: string;
   secondaryCtaText?: string;
   secondaryCtaHref?: string;
-  backgroundImage?: string;
+  backgroundImages?: string[];
+  backgroundVideo?: string;
   showAnchor?: boolean;
 }
 
@@ -23,22 +25,55 @@ export function HeroSection({
   ctaHref = "/contact",
   secondaryCtaText = "Pelajari Lebih Lanjut",
   secondaryCtaHref = "/about",
-  backgroundImage,
+  backgroundImages = [],
+  backgroundVideo,
   showAnchor = true,
 }: HeroSectionProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    if (backgroundImages.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % backgroundImages.length
+      );
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
+
+  const currentBackgroundImage =
+    backgroundImages[currentImageIndex] || backgroundImages[0];
+
   return (
     <section
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20"
       style={{
-        backgroundImage: backgroundImage
-          ? `url(${backgroundImage})`
-          : undefined,
+        backgroundImage:
+          !backgroundVideo && currentBackgroundImage
+            ? `url(${currentBackgroundImage})`
+            : undefined,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        transition: "background-image 1s ease-in-out",
       }}
     >
+      {/* Background Video */}
+      {backgroundVideo && (
+        <video
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
+      )}
+
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/60 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-900/70 to-transparent z-10" />
 
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -92,22 +127,7 @@ export function HeroSection({
           </Link>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </div>
+
       </div>
 
       {/* CSS for animations */}

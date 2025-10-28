@@ -2,63 +2,369 @@
   "gallery": [
     {
       "id": "1",
-      "title": "Pelatihan Safety di Pelabuhan",
-      "description": "Para ABK mengikuti pelatihan safety dan prosedur keselamatan kerja di laut",
-      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+      "title": "Pelatihan STCW di Simulator Kapal",
+      "description": "Para peserta pelatihan menjalankan simulasi navigasi kapal di fasilitas modern kami",
+      "image": "https://images.unsplash.com/photo-1753526372680-7d368f2f068e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVsYXV0JTIwaW5kb25lc2lhfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
       "category": "Pelatihan",
-      "date": "2024-01-15",
-      "alt": "Pelatihan Safety ABK"
+      "alt": "Pelatihan STCW",
+      "date": "2024-01-15"
     },
     {
       "id": "2",
-      "title": "Kapal Kontainer Modern",
-      "description": "Kapal kontainer terbaru armada kerja sama internasional",
-      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-      "category": "Armada",
-      "date": "2024-01-10",
-      "alt": "Kapal Kontainer"
+      "title": "Penempatan ABK di Kapal Tanker",
+      "description": "ABK lulusan kami bersiap di atas kapal tanker minyak untuk pelayaran internasional",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+      "category": "Penempatan",
+      "alt": "Penempatan ABK",
+      "date": "2024-01-10"
     },
     {
       "id": "3",
-      "title": "Sertifikasi STCW",
-      "description": "Peserta sukses melewati ujian sertifikasi internasional",
-      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      "category": "Sertifikasi",
-      "date": "2024-01-05",
-      "alt": "Sertifikasi STCW"
+      "title": "Workshop Keselamatan Kerja",
+      "description": "Peserta mengikuti workshop intensif tentang prosedur keselamatan maritim terkini",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+      "category": "Workshop",
+      "alt": "Workshop Keselamatan",
+      "date": "2024-01-08"
     },
     {
       "id": "4",
-      "title": "Simulasi Keadaan Darurat",
-      "description": "Simulasi drill keadaan darurat di kapal",
-      "image": "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop",
-      "category": "Pelatihan",
-      "date": "2023-12-28",
-      "alt": "Simulasi Darurat"
+      "title": "Sertifikasi Internasional",
+      "description": "Peserta menerima sertifikat STCW dan IMO setelah lulus ujian komprehensif",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+      "category": "Sertifikasi",
+      "alt": "Sertifikasi",
+      "date": "2024-01-05"
+    },
+    {
+      "id": "5",
+      "title": "Event Networking Maritim",
+      "description": "Gathering ABK, calon ABK, dan profesional maritim untuk networking dan knowledge sharing",
+      "image": "https://images.unsplash.com/photo-1587355794919-a5ee00b7f563?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVsYXV0JTIwaW5kb25lc2lhfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
+      "category": "Event",
+      "alt": "Event Networking",
+      "date": "2024-01-01"
+    },
+    {
+      "id": "6",
+      "title": "Fasilitas Pelatihan Modern",
+      "description": "Laboratorium dan simulator kami dilengkapi dengan teknologi terkini untuk pembelajaran optimal",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+      "category": "Fasilitas",
+      "alt": "Fasilitas",
+      "date": "2023-12-28"
+    },
+    {
+      "id": "7",
+      "title": "Program Mentoring One-on-One",
+      "description": "Mentor berpengalaman memberikan panduan karir langsung kepada peserta pelatihan",
+      "image": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+      "category": "Mentoring",
+      "alt": "Mentoring",
+      "date": "2023-12-25"
+    },
+    {
+      "id": "8",
+      "title": "Kunjungan ke Pelabuhan Internasional",
+      "description": "Peserta mengunjungi pelabuhan untuk belajar langsung tentang operasi logistik dan pelayaran",
+      "image": "https://images.unsplash.com/photo-1683029638112-897a5f8da5d1?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBlbGF1dCUyMGluZG9uZXNpYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600",
+      "category": "Study Tour",
+      "alt": "Study Tour",
+      "date": "2023-12-20"
+    },
+    {
+      "id": "9",
+      "title": "Upacara Kelulusan 2023",
+      "description": "Para lulusan program pelatihan menerima ijazah dan siap memulai karir maritim mereka",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+      "category": "Event",
+      "alt": "Upacara Kelulusan",
+      "date": "2023-12-15"
     }
   ],
   "company": {
     "name": "PT. Duta Samudera Bahari",
-    "description": "Perusahaan terkempin dalam pemberangkatan Anak Buah Kapal dengan standar internasional tertinggi.",
+    "description": "Kami adalah perusahaan terkemuka dalam rekrutmen dan penempatan Anak Buah Kapal (ABK) dengan standar internasional tertinggi.",
     "email": "info@dutasam.com",
     "phone": "+62 (0)21-XXX-XXXX",
-    "address": "Jakarta, Indonesia",
+    "address": "Ruko Pelutan Square, Jl. Prof. Moch Yamin No. 4, Pelutan Pemalang - Jawa Tengah 52311, Indonesia",
     "website": "https://dutasam.com",
-    "founded": 2010,
-    "employees": 150,
+    "logo": "/Image/logo.png",
+    "founded": 2015,
+    "employees": 50,
     "visionMission": {
-      "vision": "Menjadi perusahaan pemberangkatan ABK terpercaya dan profesional dengan standar internasional.",
+      "vision": "Menjadi perusahaan rekrutmen dan penempatan ABK terpercaya dan profesional dengan standar internasional.",
       "mission": [
         "Menyediakan layanan rekrutmen dan penempatan ABK berkualitas tinggi",
         "Memastikan kesejahteraan dan perlindungan ABK sesuai hukum internasional",
         "Bermitra dengan shipping companies terkemuka di seluruh dunia",
-        "Mengembangkan SDM maritim yang kompeten dan profesional"
+        "Memastikan proses rekrutmen yang transparan dan sesuai standar internasional"
       ]
     },
     "socialMedia": {
       "facebook": "https://facebook.com/dutasam",
       "instagram": "https://instagram.com/dutasam",
       "linkedin": "https://linkedin.com/company/dutasam"
+    },
+    "organizationalStructure": [
+      {
+        "id": "1",
+        "name": "Budi Santoso",
+        "position": "Komisaris Utama",
+        "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        "level": 1,
+        "icon": "Building2"
+      },
+      {
+        "id": "2",
+        "name": "Sari Wijaya",
+        "position": "Direktur Utama",
+        "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "level": 2,
+        "icon": "Users"
+      },
+      {
+        "id": "3",
+        "name": "Ahmad Rizki",
+        "position": "Direktur Operasional",
+        "photo": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        "level": 3,
+        "icon": "Ship"
+      },
+      {
+        "id": "4",
+        "name": "Maya Indira",
+        "position": "Direktur Keuangan",
+        "photo": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "level": 3,
+        "icon": "TrendingUp"
+      },
+      {
+        "id": "5",
+        "name": "Eko Prasetyo",
+        "position": "Kepala Bagian Rekrutmen",
+        "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+        "level": 4,
+        "icon": "Users"
+      },
+      {
+        "id": "6",
+        "name": "Dewi Lestari",
+        "position": "Kepala Bagian Pelatihan",
+        "photo": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face",
+        "level": 4,
+        "icon": "Award"
+      },
+      {
+        "id": "7",
+        "name": "Rudi Hartono",
+        "position": "Kepala Bagian Administrasi",
+        "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+        "level": 4,
+        "icon": "FileText"
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "name": "Beranda",
+      "href": "/"
+    },
+    {
+      "name": "Tentang",
+      "href": "/tentang"
+    },
+    {
+      "name": "Layanan",
+      "href": "/services"
+    },
+    {
+      "name": "Lowongan Kerja",
+      "href": "/lowongan-kerja"
+    },
+    {
+      "name": "Berita",
+      "href": "/news"
+    },
+    {
+      "name": "Galeri",
+      "href": "/gallery"
+    },
+    {
+      "name": "Kontak",
+      "href": "/contact"
     }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Rekrutmen ABK",
+      "description": "Kami menyediakan layanan rekrutmen Anak Buah Kapal yang ketat dan profesional sesuai standar maritim internasional.",
+      "icon": "Users",
+      "features": [
+        "Seleksi ketat sesuai standar maritim",
+        "Verifikasi dokumen dan kualifikasi",
+        "Assessment kompetensi dasar",
+        "Placement assistance"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Penempatan Kerja Laut",
+      "description": "Penempatan ABK di berbagai jenis kapal dengan kompensasi kompetitif dan kontrak jangka panjang.",
+      "icon": "Ship",
+      "features": [
+        "Penempatan di armada global",
+        "Kontrak 6-12 bulan",
+        "Kompensasi sesuai standar ICCPR",
+        "Support penuh selama kontrak"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Kerja Sama Internasional",
+      "description": "Bermitra dengan shipping companies terkemuka di seluruh dunia untuk peluang penempatan kerja ABK.",
+      "icon": "Globe",
+      "features": [
+        "Network global",
+        "Partnership dengan major operators",
+        "Multi-national crew",
+        "Placement opportunities"
+      ]
+    }
+  ],
+  "newsCategories": [
+    {
+      "id": "berita",
+      "name": "Berita"
+    },
+    {
+      "id": "tips",
+      "name": "Tips & Panduan"
+    },
+    {
+      "id": "pelatihan",
+      "name": "Pelatihan"
+    },
+    {
+      "id": "karir",
+      "name": "Peluang Karir"
+    }
+  ],
+  "seo": {
+    "keywords": [
+      "ABK",
+      "rekrutmen ABK",
+      "penempatan ABK",
+      "kerja laut",
+      "rekrutmen maritim"
+    ],
+    "author": "PT. Duta Samudera Bahari"
+  },
+  "news": [
+    {
+      "id": "1",
+      "title": "Selamat Datang di PT. Duta Samudera Bahari",
+      "description": "Kami menghadirkan solusi terpadu untuk pemberangkatan dan penempatan ABK dengan standar internasional.",
+      "author": "Tim Komunikasi",
+      "date": "2024-01-20",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
+      "category": "Berita",
+      "tags": [
+        "pemberangkatan",
+        "abk"
+      ],
+      "slug": "selamat-datang-di-pt-duta-samudera-bahari",
+      "readingTime": {
+        "text": "5 min read",
+        "minutes": 5,
+        "time": 300000,
+        "words": 850
+      }
+    }
+  ],
+  "servicesPage": {
+    "processSteps": [
+      {
+        "number": "1",
+        "title": "Registrasi & Assessment",
+        "description": "Daftar dan ikuti penilaian kemampuan dasar untuk menentukan kesesuaian dengan posisi yang tersedia",
+        "icon": "Briefcase"
+      },
+      {
+        "number": "2",
+        "title": "Seleksi & Verifikasi",
+        "description": "Proses seleksi ketat dan verifikasi dokumen sesuai standar maritim internasional",
+        "icon": "Award"
+      },
+      {
+        "number": "3",
+        "title": "Matching & Persiapan",
+        "description": "Matching dengan posisi yang sesuai dan persiapan akhir sebelum penempatan",
+        "icon": "Shield"
+      },
+      {
+        "number": "4",
+        "title": "Penempatan",
+        "description": "Ditempatkan di kapal yang sesuai dengan kualifikasi dan pengalaman Anda",
+        "icon": "CheckCircle2"
+      }
+    ],
+    "additionalServices": [
+      {
+        "title": "Verifikasi Dokumen",
+        "description": "Layanan verifikasi dokumen dan sertifikasi untuk memastikan kualifikasi Anda sesuai standar internasional",
+        "features": [
+          "Verifikasi STCW certificate",
+          "Medical certificate validation",
+          "Document legalization",
+          "Compliance check"
+        ]
+      },
+      {
+        "title": "Support Selama Kontrak",
+        "description": "Dukungan penuh selama masa kontrak kerja di kapal untuk memastikan kesejahteraan Anda",
+        "features": [
+          "On-call support 24/7",
+          "Contract monitoring",
+          "Welfare assistance",
+          "Repatriation support"
+        ]
+      }
+    ],
+    "qualifications": {
+      "requirements": [
+        "Usia minimal 18 tahun, maksimal 55 tahun",
+        "Pendidikan minimal SMA/SMK",
+        "Kesehatan fisik dan mental terjamin",
+        "Tidak memiliki tunggakan hukum",
+        "Dapat berbahasa Inggris dasar"
+      ],
+      "documents": [
+        "STCW 95/2010 Certificate",
+        "IMO Certification",
+        "SOLAS & MARPOL compliance",
+        "Medical Certificate (IHM)",
+        "Valid passport & seaman book"
+      ]
+    },
+    "faq": [
+      {
+        "q": "Berapa lama proses rekrutmen?",
+        "a": "Proses rekrutmen biasanya memakan waktu 2-4 minggu tergantung posisi dan ketersediaan lowongan."
+      },
+      {
+        "q": "Apakah ada biaya rekrutmen?",
+        "a": "Ada biaya administrasi awal yang akan dikembalikan jika Anda berhasil ditempatkan."
+      },
+      {
+        "q": "Bagaimana jaminan penempatan?",
+        "a": "Kami memiliki partnership dengan ratusan perusahaan pelayaran internasional yang menjamin penempatan bagi kandidat yang memenuhi syarat."
+      },
+      {
+        "q": "Apa saja benefit yang diterima saat bekerja?",
+        "a": "Gaji kompetitif, asuransi kesehatan, tunjangan keluarga, bonus, dan dukungan selama kontrak."
+      }
+    ]
   }
 }

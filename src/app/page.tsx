@@ -4,45 +4,39 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { VisionMissionSection } from "@/components/sections/VisionMissionSection";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { NewsCard } from "@/components/sections/NewsCard";
-import { COMPANY_NAME, SERVICES } from "@/lib/constants";
-import { ArrowRight, Award, Users, Globe } from "lucide-react";
+import { GalleryCard } from "@/components/sections/GalleryCard";
+import { getCompanyProfile, getServices, getNews, getGalleryItems } from "@/lib/cms";
+import { NewsPost, Service, GalleryItem } from "@/lib/types";
+import { ArrowRight, Award, Users, Globe, LucideIcon } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: `${COMPANY_NAME} - Beranda`,
-  description:
-    "Pemberangkatan ABK profesional dengan standar internasional tertinggi",
-};
+interface WhyChooseUsItem {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
 
-export default function Home() {
-  // Sample news data
-  const sampleNews = [
-    {
-      id: "1",
-      title: "Selamat Datang di PT. Duta Samudera Bahari",
-      description:
-        "Kami menghadirkan solusi terpadu untuk pemberangkatan dan penempatan ABK dengan standar internasional.",
-      author: "Tim Komunikasi",
-      date: "2024-01-20",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-      category: "Berita",
-      tags: ["pemberangkatan", "abk"],
-      slug: "selamat-datang-di-pt-duta-samudera-bahari",
-      readingTime: { text: "5 min read", minutes: 5, time: 300000, words: 850 },
-    },
-  ];
+export default async function Home() {
+  const company = await getCompanyProfile();
+  const services = await getServices();
+  const news = await getNews();
+  const galleryItems = await getGalleryItems();
 
   return (
     <>
-      {/* Hero Section */}
       <HeroSection
         title="Karir Cemerlang di Industri Maritim Global"
-        subtitle="PT. Duta Samudera Bahari"
-        description="Kami menyediakan layanan rekrutmen, pelatihan, dan penempatan ABK berkualitas tinggi dengan standar internasional terbaik. Bergabunglah dengan ribuan ABK sukses yang telah mengembangkan karir mereka bersama kami."
+        subtitle={company.name}
+        description="Kami menyediakan layanan rekrutmen dan penempatan ABK berkualitas tinggi dengan standar internasional terbaik. Bergabunglah dengan ribuan ABK sukses yang telah ditempatkan di kapal-kapal terkemuka dunia."
         ctaText="Daftar Sekarang"
         ctaHref="/contact"
         secondaryCtaText="Pelajari Layanan"
         secondaryCtaHref="/services"
+        // backgroundImages={[
+        //   "https://images.unsplash.com/photo-1585793753011-397e6e4668d6?w=1920&h=1080&fit=crop",
+        //   "https://images.unsplash.com/photo-1522911715181-6ce196f07c76?w=1920&h=1080&fit=crop",
+        //   "https://images.unsplash.com/photo-1719242513420-89bd1c5a7248?w=1920&h=1080&fit=crop",
+        // ]}
+        backgroundVideo="/Video/hero-video.mp4"
       />
 
       {/* Company Profile Section */}
@@ -53,22 +47,22 @@ export default function Home() {
             <div className="space-y-6">
               <div className="space-y-2">
                 <h2 className="text-4xl font-bold text-foreground">
-                  Tentang {COMPANY_NAME}
+                  Tentang {company.name}
                 </h2>
                 <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full" />
               </div>
 
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Sejak didirikan pada tahun 2010, kami telah menjadi mitra
-                terpercaya dalam industri pemberangkatan ABK di Indonesia.
+                Sejak didirikan pada tahun 2015, kami telah menjadi mitra
+                terpercaya dalam rekrutmen dan penempatan ABK di Indonesia.
                 Dengan komitmen penuh terhadap profesionalisme dan standar
-                internasional, kami telah membantu ribuan ABK mengembangkan
-                karir cemerlang.
+                internasional, kami telah membantu ribuan ABK mendapatkan
+                penempatan di kapal-kapal terkemuka dunia.
               </p>
 
               <div className="grid grid-cols-3 gap-4 py-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">14+</div>
+                  <div className="text-3xl font-bold text-primary">10+</div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Tahun Pengalaman
                   </p>
@@ -80,7 +74,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">50+</div>
+                  <div className="text-3xl font-bold text-primary">15+</div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Negara Partner
                   </p>
@@ -91,7 +85,7 @@ export default function Home() {
                 href="/services"
                 className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
-                Lihat Layanan Kami
+                Lihat Selengkapnya
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
@@ -117,14 +111,14 @@ export default function Home() {
               Layanan Kami
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Kami menyediakan solusi lengkap untuk kebutuhan pemberangkatan dan
+              Kami menyediakan solusi lengkap untuk kebutuhan rekrutmen dan
               penempatan ABK Anda
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {SERVICES.map((service, idx) => (
+            {services.map((service: Service, idx: number) => (
               <ServiceCard
                 key={service.id}
                 service={service}
@@ -146,18 +140,18 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 icon: Award,
-                title: "Sertifikasi Internasional",
+                title: "Standar Internasional",
                 description:
-                  "Semua ABK kami tersertifikasi STCW dan memenuhi standar IMO",
+                  "Seleksi ABK yang ketat sesuai standar maritim internasional",
               },
               {
                 icon: Users,
                 title: "Tim Profesional",
                 description:
-                  "Tim berpengalaman siap mendampingi setiap tahap karir Anda",
+                  "Tim berpengalaman siap mendampingi proses rekrutmen dan penempatan Anda",
               },
               {
                 icon: Globe,
@@ -165,7 +159,7 @@ export default function Home() {
                 description:
                   "Partnership dengan shipping companies terkemuka di seluruh dunia",
               },
-            ].map((item, idx) => {
+            ] as WhyChooseUsItem[]).map((item: WhyChooseUsItem, idx: number) => {
               const Icon = item.icon;
               return (
                 <div
@@ -208,7 +202,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            {sampleNews.map((post) => (
+            {news.map((post: NewsPost) => (
               <NewsCard key={post.id} post={post} />
             ))}
           </div>
@@ -225,6 +219,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Gallery Section */}
+      <section className="py-20 bg-white dark:bg-slate-900">
+        <div className="container-maritime">
+          <div className="flex justify-between items-center mb-12">
+            <div>
+              <h2 className="text-4xl font-bold text-foreground mb-2">
+                Galeri Kegiatan
+              </h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-400 rounded-full" />
+            </div>
+            <Link
+              href="/gallery"
+              className="hidden md:inline-flex items-center gap-2 text-primary hover:text-blue-700 font-semibold transition-colors"
+            >
+              Lihat Semua
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {galleryItems.slice(0, 3).map((item: GalleryItem) => (
+              <GalleryCard key={item.id} item={item} />
+            ))}
+          </div>
+
+          <div className="text-center md:hidden">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 text-primary hover:text-blue-700 font-semibold transition-colors"
+            >
+              Lihat Galeri Lengkap
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950">
         <div className="container-maritime text-center text-white space-y-6">
@@ -232,8 +263,8 @@ export default function Home() {
             Siap Memulai Karir Maritim Anda?
           </h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Daftarkan diri Anda sekarang dan dapatkan kesempatan untuk bekerja
-            dengan armada kapal terkemuka dunia
+            Daftarkan diri Anda sekarang dan dapatkan kesempatan penempatan di
+            armada kapal terkemuka dunia
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

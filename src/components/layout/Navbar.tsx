@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { COMPANY_NAME, NAVIGATION } from "@/lib/constants";
+import { COMPANY_NAME, COMPANY_LOGO, NAVIGATION } from "@/lib/constants";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,9 +14,11 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-400 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">⚓</span>
-            </div>
+            <img
+              src={COMPANY_LOGO}
+              alt={`${COMPANY_NAME} Logo`}
+              className="w-8 h-8 rounded-lg object-cover"
+            />
             <span className="font-bold text-lg text-foreground hidden sm:inline">
               {COMPANY_NAME}
             </span>
@@ -33,12 +35,6 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-            >
-              Hubungi Kami
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -67,13 +63,6 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className="block px-4 py-2 text-center bg-primary text-white rounded hover:bg-blue-700 transition-colors font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Hubungi Kami
-            </Link>
           </div>
         )}
       </div>

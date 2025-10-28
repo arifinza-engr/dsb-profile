@@ -1,6 +1,8 @@
 import { Eye, Target } from "lucide-react";
+import { getCompanyProfile } from "@/lib/cms";
 
-export function VisionMissionSection() {
+export async function VisionMissionSection() {
+  const company = await getCompanyProfile();
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-900 dark:to-slate-800">
       <div className="container-maritime">
@@ -22,10 +24,7 @@ export function VisionMissionSection() {
             </div>
 
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-              Menjadi perusahaan pemberangkatan Anak Buah Kapal terpercaya dan
-              profesional dengan standar internasional tertinggi, yang
-              memberikan peluang karir terbaik dan kesejahteraan optimal bagi
-              setiap ABK.
+              {company.visionMission?.vision}
             </p>
           </div>
 
@@ -39,42 +38,16 @@ export function VisionMissionSection() {
             </div>
 
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                  ✓
-                </span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  Menyediakan layanan rekrutmen dan penempatan ABK berkualitas
-                  tinggi sesuai kebutuhan industri maritim global
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                  ✓
-                </span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  Memastikan kesejahteraan, perlindungan, dan hak ABK sesuai
-                  standar hukum internasional (ICCPR, MLC)
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                  ✓
-                </span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  Bermitra dengan shipping companies terkemuka dan memberikan
-                  peluang karir internasional
-                </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                  ✓
-                </span>
-                <span className="text-gray-600 dark:text-gray-300">
-                  Terus mengembangkan SDM maritim yang kompeten, profesional,
-                  dan siap menghadapi tantangan industri
-                </span>
-              </li>
+              {company.visionMission?.mission?.map((mission, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <span className="text-primary dark:text-blue-400 font-bold text-lg">
+                    ✓
+                  </span>
+                  <span className="text-gray-600 dark:text-gray-300">
+                    {mission}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

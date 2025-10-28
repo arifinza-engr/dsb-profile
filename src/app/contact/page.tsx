@@ -3,6 +3,12 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaXTwitter,
+  FaTiktok,
+} from "react-icons/fa6";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -93,6 +99,23 @@ export default function ContactPage() {
 
   return (
     <>
+      {/* Header Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800">
+        <div className="container-maritime text-center">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-full mb-6">
+            <Mail className="w-10 h-10 text-primary" />
+          </div>
+          <h1 className="text-4xl font-bold text-foreground mb-4">
+            Kontak Kami
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-0">
+            Hubungi kami untuk konsultasi dan informasi tentang layanan
+            rekrutmen ABK profesional
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="py-20 bg-white dark:bg-slate-900">
         <div className="container-maritime">
@@ -137,18 +160,24 @@ export default function ContactPage() {
                   Ikuti Kami
                 </h3>
                 <div className="flex gap-4">
-                  {["Instagram", "Facebook", "LinkedIn", "Twitter"].map(
-                    (social, idx) => (
+                  {[
+                    { name: "Instagram", icon: FaInstagram },
+                    { name: "Facebook", icon: FaFacebookF },
+                    { name: "Twitter", icon: FaXTwitter },
+                    { name: "TikTok", icon: FaTiktok },
+                  ].map((social, idx) => {
+                    const Icon = social.icon;
+                    return (
                       <a
                         key={idx}
                         href="#"
                         className="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
-                        title={social}
+                        title={social.name}
                       >
-                        {social.charAt(0)}
+                        <Icon className="w-6 h-6" />
                       </a>
-                    )
-                  )}
+                    );
+                  })}
                 </div>
               </div>
             </div>

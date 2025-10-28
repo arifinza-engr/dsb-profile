@@ -4,10 +4,10 @@ import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "PT. Duta Samudera Bahari - Pemberangkatan ABK Profesional",
+  title: "PT. Duta Samudera Bahari - Rekrutmen dan Penempatan ABK Profesional",
   description:
-    "Rekrutmen, pelatihan, dan penempatan ABK berkualitas tinggi dengan standar internasional",
-  keywords: ["ABK", "pemberangkatan", "maritim", "pelatihan", "kerja", "kapal"],
+    "Rekrutmen dan penempatan ABK berkualitas tinggi dengan standar internasional",
+  keywords: ["ABK", "rekrutmen", "penempatan", "maritim", "kerja", "kapal"],
   authors: [{ name: "PT. Duta Samudera Bahari" }],
   creator: "PT. Duta Samudera Bahari",
   publisher: "PT. Duta Samudera Bahari",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://dutasamudera.com",
     siteName: "PT. Duta Samudera Bahari",
-    title: "PT. Duta Samudera Bahari - Pemberangkatan ABK Profesional",
+    title: "PT. Duta Samudera Bahari - Rekrutmen dan Penempatan ABK Profesional",
     description:
-      "Rekrutmen, pelatihan, dan penempatan ABK berkualitas tinggi dengan standar internasional",
+      "Rekrutmen dan penempatan ABK berkualitas tinggi dengan standar internasional",
   },
   robots: {
     index: true,
