@@ -6,7 +6,7 @@ import { CheckCircle2, Briefcase, Award, Shield } from "lucide-react";
 export const metadata: Metadata = {
   title: "Layanan Kami - PT. Duta Samudera Bahari",
   description:
-    "Layanan rekrutmen dan penempatan ABK profesional dengan standar internasional",
+    "Layanan rekrutmen dan penempatan Pelaut profesional dengan standar internasional",
 };
 
 export default async function ServicesPage() {
@@ -15,22 +15,16 @@ export default async function ServicesPage() {
   const processSteps = servicesPageData.processSteps || [];
   const additionalServices = servicesPageData.additionalServices || [];
 
+  // Icon mapping for process steps
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    Briefcase,
+    Award,
+    Shield,
+    CheckCircle2,
+  };
+
   return (
     <>
-      {/* Header Section */}
-      {/* <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-800 dark:via-slate-900 dark:to-slate-800">
-        <div className="container-maritime text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-full mb-6">
-            <Briefcase className="w-10 h-10 text-primary" />
-          </div>
-          <h1 className="text-4xl font-bold text-foreground mb-4">Layanan</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
-            Layanan rekrutmen dan penempatan ABK profesional dengan standar
-            internasional tertinggi
-          </p>
-        </div>
-      </section> */}
-
       {/* Main Services Grid */}
       <section className="py-20 bg-white dark:bg-slate-900">
         <div className="container-maritime">
@@ -39,7 +33,7 @@ export default async function ServicesPage() {
               Layanan Utama Kami
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Kami menawarkan layanan rekrutmen dan penempatan ABK dengan
+              Kami menawarkan layanan rekrutmen dan penempatan Pelaut dengan
               standar kualitas tertinggi
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
@@ -73,7 +67,7 @@ export default async function ServicesPage() {
 
           <div className="grid md:grid-cols-4 gap-6">
             {processSteps.map((step: any, idx: number) => {
-              const Icon = step.icon;
+              const Icon = iconMap[step.icon] || CheckCircle2;
               return (
                 <div key={idx} className="relative">
                   {/* Connector line */}
@@ -126,14 +120,16 @@ export default async function ServicesPage() {
                 </p>
 
                 <ul className="space-y-2">
-                  {service.features.map((feature: string, featureIdx: number) => (
-                    <li key={featureIdx} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-200">
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
+                  {service.features.map(
+                    (feature: string, featureIdx: number) => (
+                      <li key={featureIdx} className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="text-gray-700 dark:text-gray-200">
+                          {feature}
+                        </span>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             ))}
@@ -152,14 +148,16 @@ export default async function ServicesPage() {
               <div>
                 <h3 className="text-2xl font-bold mb-4">Persyaratan Dasar</h3>
                 <ul className="space-y-3">
-                  {servicesPageData.qualifications?.requirements?.map((req: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="text-blue-400 font-bold text-xl mt-1">
-                        ✓
-                      </span>
-                      <span>{req}</span>
-                    </li>
-                  ))}
+                  {servicesPageData.qualifications?.requirements?.map(
+                    (req: string, idx: number) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <span className="text-blue-400 font-bold text-xl mt-1">
+                          ✓
+                        </span>
+                        <span>{req}</span>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
 
@@ -168,14 +166,16 @@ export default async function ServicesPage() {
                   Dokumen yang Diperlukan
                 </h3>
                 <ul className="space-y-3">
-                  {servicesPageData.qualifications?.documents?.map((cert: string, idx: number) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <span className="text-blue-400 font-bold text-xl mt-1">
-                        ✓
-                      </span>
-                      <span>{cert}</span>
-                    </li>
-                  ))}
+                  {servicesPageData.qualifications?.documents?.map(
+                    (cert: string, idx: number) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <span className="text-blue-400 font-bold text-xl mt-1">
+                          ✓
+                        </span>
+                        <span>{cert}</span>
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             </div>

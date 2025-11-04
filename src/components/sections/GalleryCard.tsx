@@ -13,6 +13,7 @@ import { MapPin, Calendar } from "lucide-react";
 import { useState } from "react";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
+import { getOptimizedImageProps, IMAGE_SIZES } from "@/lib/image-utils";
 
 interface GalleryCardProps {
   item: GalleryItem;
@@ -38,8 +39,9 @@ export function GalleryCard({ item, onImageClick }: GalleryCardProps) {
         onClick={() => onImageClick?.(item)}
       >
         <Image
-          src={item.image}
-          alt={item.alt || item.title}
+          {...getOptimizedImageProps(item.image, item.alt || item.title, {
+            sizes: IMAGE_SIZES.gallery,
+          })}
           fill
           className={`object-cover transition-transform duration-300 ${
             isHovered ? "scale-110" : "scale-100"

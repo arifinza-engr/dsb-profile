@@ -5,9 +5,11 @@ import { VisionMissionSection } from "@/components/sections/VisionMissionSection
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { NewsCard } from "@/components/sections/NewsCard";
 import { GalleryCard } from "@/components/sections/GalleryCard";
-import { getCompanyProfile, getServices, getNews, getGalleryItems } from "@/lib/cms";
+import { TestimonialSection } from "@/components/sections/TestimonialSection";
+import { getCompanyProfile, getServices, getNews, getGalleryItems, getTestimonials } from "@/lib/cms";
 import { NewsPost, Service, GalleryItem } from "@/lib/types";
 import { ArrowRight, Award, Users, Globe, LucideIcon } from "lucide-react";
+import data from "@/content/data.json";
 
 interface WhyChooseUsItem {
   icon: LucideIcon;
@@ -20,23 +22,19 @@ export default async function Home() {
   const services = await getServices();
   const news = await getNews();
   const galleryItems = await getGalleryItems();
+  const testimonials = await getTestimonials();
 
   return (
     <>
       <HeroSection
-        title="Karir Cemerlang di Industri Maritim Global"
+        title={data.homepage.hero.title}
         subtitle={company.name}
-        description="Kami menyediakan layanan rekrutmen dan penempatan ABK berkualitas tinggi dengan standar internasional terbaik. Bergabunglah dengan ribuan ABK sukses yang telah ditempatkan di kapal-kapal terkemuka dunia."
-        ctaText="Daftar Sekarang"
-        ctaHref="/contact"
-        secondaryCtaText="Pelajari Layanan"
-        secondaryCtaHref="/services"
-        // backgroundImages={[
-        //   "https://images.unsplash.com/photo-1585793753011-397e6e4668d6?w=1920&h=1080&fit=crop",
-        //   "https://images.unsplash.com/photo-1522911715181-6ce196f07c76?w=1920&h=1080&fit=crop",
-        //   "https://images.unsplash.com/photo-1719242513420-89bd1c5a7248?w=1920&h=1080&fit=crop",
-        // ]}
-        backgroundVideo="/Video/hero-video.mp4"
+        description={data.homepage.hero.description}
+        ctaText={data.homepage.hero.ctaText}
+        ctaHref={data.homepage.hero.ctaHref}
+        secondaryCtaText={data.homepage.hero.secondaryCtaText}
+        secondaryCtaHref={data.homepage.hero.secondaryCtaHref}
+        backgroundVideo={data.homepage.hero.backgroundVideo}
       />
 
       {/* Company Profile Section */}
@@ -53,32 +51,18 @@ export default async function Home() {
               </div>
 
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Sejak didirikan pada tahun 2015, kami telah menjadi mitra
-                terpercaya dalam rekrutmen dan penempatan ABK di Indonesia.
-                Dengan komitmen penuh terhadap profesionalisme dan standar
-                internasional, kami telah membantu ribuan ABK mendapatkan
-                penempatan di kapal-kapal terkemuka dunia.
+                {data.homepage.companyProfile.description}
               </p>
 
               <div className="grid grid-cols-3 gap-4 py-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">10+</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Tahun Pengalaman
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">5000+</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    ABK Terlatih
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">15+</div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Negara Partner
-                  </p>
-                </div>
+                {data.homepage.companyProfile.stats.map((stat, idx) => (
+                  <div key={idx} className="text-center">
+                    <div className="text-3xl font-bold text-primary">{stat.value}</div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
               </div>
 
               <Link
@@ -112,7 +96,7 @@ export default async function Home() {
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Kami menyediakan solusi lengkap untuk kebutuhan rekrutmen dan
-              penempatan ABK Anda
+              penempatan Pelaut Anda
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
           </div>
@@ -140,27 +124,13 @@ export default async function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {([
-              {
-                icon: Award,
-                title: "Standar Internasional",
-                description:
-                  "Seleksi ABK yang ketat sesuai standar maritim internasional",
-              },
-              {
-                icon: Users,
-                title: "Tim Profesional",
-                description:
-                  "Tim berpengalaman siap mendampingi proses rekrutmen dan penempatan Anda",
-              },
-              {
-                icon: Globe,
-                title: "Jangkauan Global",
-                description:
-                  "Partnership dengan shipping companies terkemuka di seluruh dunia",
-              },
-            ] as WhyChooseUsItem[]).map((item: WhyChooseUsItem, idx: number) => {
-              const Icon = item.icon;
+            {data.homepage.whyChooseUs.map((item, idx: number) => {
+              const iconMap: Record<string, LucideIcon> = {
+                Award,
+                Users,
+                Globe,
+              };
+              const Icon = iconMap[item.icon];
               return (
                 <div
                   key={idx}
@@ -256,29 +226,31 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Testimonial Section */}
+      <TestimonialSection testimonials={testimonials} />
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950">
         <div className="container-maritime text-center text-white space-y-6">
           <h2 className="text-4xl font-bold">
-            Siap Memulai Karir Maritim Anda?
+            {data.homepage.cta.title}
           </h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Daftarkan diri Anda sekarang dan dapatkan kesempatan penempatan di
-            armada kapal terkemuka dunia
+            {data.homepage.cta.description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href={data.homepage.cta.primaryButton.href}
               className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-flex items-center justify-center gap-2 group"
             >
-              Daftar Sekarang
+              {data.homepage.cta.primaryButton.text}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/services"
+              href={data.homepage.cta.secondaryButton.href}
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-600 transition-colors"
             >
-              Pelajari Lebih Lanjut
+              {data.homepage.cta.secondaryButton.text}
             </Link>
           </div>
         </div>

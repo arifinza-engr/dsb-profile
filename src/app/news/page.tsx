@@ -3,122 +3,23 @@ import { NewsCard } from "@/components/sections/NewsCard";
 import Link from "next/link";
 import { Search, ArrowRight, Newspaper } from "lucide-react";
 import { Input } from "@/components/ui/Input";
+import { getNews, getNewsCategories } from "@/lib/cms";
 
 export const metadata: Metadata = {
   title: "Berita & Blog - PT. Duta Samudera Bahari",
   description: "Berita terbaru, tips karir, dan artikel industri maritim",
 };
 
-export default function NewsPage() {
-  // Sample news data - in real app, this would come from Contentlayer
-  const newsPosts = [
-    {
-      id: "1",
-      title: "Selamat Datang di PT. Duta Samudera Bahari",
-      description:
-        "Kami menghadirkan solusi terpadu untuk pemberangkatan dan penempatan ABK dengan standar internasional.",
-      author: "Tim Komunikasi",
-      date: "2024-01-20",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-      category: "Berita",
-      tags: ["pemberangkatan", "abk"],
-      slug: "selamat-datang-di-pt-duta-samudera-bahari",
-      readingTime: { text: "5 min read", minutes: 5, time: 300000, words: 850 },
-    },
-    {
-      id: "2",
-      title: "10 Tips Sukses Menghadapi Interview Kapal Asing",
-      description:
-        "Pelajari tips dan trik dari HR profesional kami untuk mempersiapkan interview internasional Anda.",
-      author: "Budi Hartono",
-      date: "2024-01-18",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      category: "Tips",
-      tags: ["interview", "karir", "tips"],
-      slug: "10-tips-sukses-menghadapi-interview-kapal-asing",
-      readingTime: {
-        text: "8 min read",
-        minutes: 8,
-        time: 480000,
-        words: 1400,
-      },
-    },
-    {
-      id: "3",
-      title: "Program Beasiswa Pelatihan 2024 Sudah Dibuka",
-      description:
-        "Kami menawarkan 50 beasiswa penuh untuk program pelatihan STCW tahun ini. Daftar sekarang sebelum kuota penuh!",
-      author: "HRD Team",
-      date: "2024-01-15",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      category: "Pengumuman",
-      tags: ["beasiswa", "pelatihan", "program"],
-      slug: "program-beasiswa-pelatihan-2024",
-      readingTime: { text: "4 min read", minutes: 4, time: 240000, words: 680 },
-    },
-    {
-      id: "4",
-      title: "Pengalaman ABK Kami Bekerja di Kapal Kontainer Terbesar Dunia",
-      description:
-        "Testimoni menarik dari Andi Kurniawan yang kini bekerja sebagai Chief Engineer di Ever Given.",
-      author: "Media Team",
-      date: "2024-01-12",
-      image:
-        "https://images.unsplash.com/photo-1757876804410-6a0702805fbe?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlbGF1dCUyMGluZG9uZXNpYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600",
-      category: "Testimoni",
-      tags: ["karir", "sukses", "testimoni"],
-      slug: "pengalaman-abk-kami-bekerja-di-kapal-kontainer",
-      readingTime: {
-        text: "6 min read",
-        minutes: 6,
-        time: 360000,
-        words: 1050,
-      },
-    },
-    {
-      id: "5",
-      title: "Standar Keselamatan Maritime IMO 2024: Apa yang Berubah?",
-      description:
-        "Update terbaru tentang standar keselamatan dan regulasi maritim internasional yang perlu Anda ketahui.",
-      author: "Capt. Rudi Santoso",
-      date: "2024-01-10",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
-      category: "Regulasi",
-      tags: ["keselamatan", "imo", "regulasi"],
-      slug: "standar-keselamatan-maritime-imo-2024",
-      readingTime: {
-        text: "7 min read",
-        minutes: 7,
-        time: 420000,
-        words: 1200,
-      },
-    },
-    {
-      id: "6",
-      title: "Bergabunglah dengan Event Networking ABK di Jakarta",
-      description:
-        "Kesempatan emas bertemu dengan expert industri maritim dan network dengan ABK lainnya.",
-      author: "Events Team",
-      date: "2024-01-08",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      category: "Event",
-      tags: ["networking", "event", "community"],
-      slug: "bergabunglah-dengan-event-networking-abk-jakarta",
-      readingTime: { text: "3 min read", minutes: 3, time: 180000, words: 520 },
-    },
-  ];
+export default async function NewsPage() {
+  const newsPosts = await getNews();
+  const allCategories = getNewsCategories();
 
   const categories = [
     { name: "Semua", value: "all", count: newsPosts.length },
-    ...Array.from(new Set(newsPosts.map((p) => p.category))).map((cat) => ({
-      name: cat,
-      value: cat.toLowerCase(),
-      count: newsPosts.filter((p) => p.category === cat).length,
+    ...allCategories.map((cat) => ({
+      name: cat.name,
+      value: cat.id,
+      count: newsPosts.filter((p) => p.category === cat.name).length,
     })),
   ];
 

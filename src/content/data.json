@@ -11,11 +11,11 @@
     },
     {
       "id": "2",
-      "title": "Penempatan ABK di Kapal Tanker",
-      "description": "ABK lulusan kami bersiap di atas kapal tanker minyak untuk pelayaran internasional",
+      "title": "Penempatan Pelaut di Kapal Tanker",
+      "description": "Pelaut lulusan kami bersiap di atas kapal tanker minyak untuk pelayaran internasional",
       "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
       "category": "Penempatan",
-      "alt": "Penempatan ABK",
+      "alt": "Penempatan Pelaut",
       "date": "2024-01-10"
     },
     {
@@ -39,7 +39,7 @@
     {
       "id": "5",
       "title": "Event Networking Maritim",
-      "description": "Gathering ABK, calon ABK, dan profesional maritim untuk networking dan knowledge sharing",
+      "description": "Gathering Pelaut, calon Pelaut, dan profesional maritim untuk networking dan knowledge sharing",
       "image": "https://images.unsplash.com/photo-1587355794919-a5ee00b7f563?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVsYXV0JTIwaW5kb25lc2lhfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600",
       "category": "Event",
       "alt": "Event Networking",
@@ -74,7 +74,7 @@
     },
     {
       "id": "9",
-      "title": "Upacara Kelulusan 2023",
+      "title": "Upacara Kelulusan 2025",
       "description": "Para lulusan program pelatihan menerima ijazah dan siap memulai karir maritim mereka",
       "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
       "category": "Event",
@@ -84,7 +84,7 @@
   ],
   "company": {
     "name": "PT. Duta Samudera Bahari",
-    "description": "Kami adalah perusahaan terkemuka dalam rekrutmen dan penempatan Anak Buah Kapal (ABK) dengan standar internasional tertinggi.",
+    "description": "Kami adalah perusahaan terkemuka dalam rekrutmen dan penempatan Anak Buah Kapal (Pelaut) khusus untuk kapal perikanan dengan standar internasional tertinggi.",
     "email": "info@dutasam.com",
     "phone": "+62 (0)21-XXX-XXXX",
     "address": "Ruko Pelutan Square, Jl. Prof. Moch Yamin No. 4, Pelutan Pemalang - Jawa Tengah 52311, Indonesia",
@@ -93,12 +93,11 @@
     "founded": 2015,
     "employees": 50,
     "visionMission": {
-      "vision": "Menjadi perusahaan rekrutmen dan penempatan ABK terpercaya dan profesional dengan standar internasional.",
+      "vision": "Menjadi perusahaan jasa penyedia SDM yang disegani di Domestik maupun Internasional dalam penyelenggaraan kebutuhan dunia usaha kontemporer dan dunia usaha kelautan terutama di kapal perikanan",
       "mission": [
-        "Menyediakan layanan rekrutmen dan penempatan ABK berkualitas tinggi",
-        "Memastikan kesejahteraan dan perlindungan ABK sesuai hukum internasional",
-        "Bermitra dengan shipping companies terkemuka di seluruh dunia",
-        "Memastikan proses rekrutmen yang transparan dan sesuai standar internasional"
+        "Menjadi perusahaan utama dalam penyelenggaraan persiapan dunia kerja dengan sertifikasi SDM dan bisnis",
+        "Menyelenggarakan kegiatan perusahaan jasa penyedia SDM yang bersifat profesional dan berkualitas tinggi",
+        "Menyelenggarakan jasa dan program sertifikasi dibidang sumber daya menusia, tata kelola perusahaan, dan bisnis agar memiliki hard skill dan soft skill yang handal"
       ]
     },
     "socialMedia": {
@@ -165,6 +164,29 @@
       }
     ]
   },
+  "partners": [
+    {
+      "id": "1",
+      "name": "Kementerian Perhubungan",
+      "description": "Kementerian Perhubungan Republik Indonesia",
+      "logo": "/Image/logo-kemenhub.png",
+      "website": "https://dephub.go.id"
+    },
+    {
+      "id": "2",
+      "name": "Asosiasi Pekerja Perikanan Indonesia",
+      "description": "Organisasi yang menaungi pekerja sektor perikanan Indonesia",
+      "logo": "/Image/logo-ap21.jpg",
+      "website": "#"
+    },
+    {
+      "id": "3",
+      "name": "Kementerian Ketenagakerjaan",
+      "description": "Kementerian Ketenagakerjaan Republik Indonesia",
+      "logo": "/Image/logo-kemnaker.png",
+      "website": "https://kemnaker.go.id"
+    }
+  ],
   "navigation": [
     {
       "name": "Beranda",
@@ -198,8 +220,8 @@
   "services": [
     {
       "id": 1,
-      "title": "Rekrutmen ABK",
-      "description": "Kami menyediakan layanan rekrutmen Anak Buah Kapal yang ketat dan profesional sesuai standar maritim internasional.",
+      "title": "Rekrutmen Pelaut Kapal Perikanan",
+      "description": "Kami menyediakan layanan rekrutmen Anak Buah Kapal khusus untuk kapal perikanan yang ketat dan profesional sesuai standar maritim internasional.",
       "icon": "Users",
       "features": [
         "Seleksi ketat sesuai standar maritim",
@@ -210,12 +232,12 @@
     },
     {
       "id": 2,
-      "title": "Penempatan Kerja Laut",
-      "description": "Penempatan ABK di berbagai jenis kapal dengan kompensasi kompetitif dan kontrak jangka panjang.",
+      "title": "Penempatan Kerja di Kapal Perikanan",
+      "description": "Penempatan Pelaut di berbagai jenis kapal perikanan dengan kompensasi kompetitif dan kontrak jangka panjang.",
       "icon": "Ship",
       "features": [
-        "Penempatan di armada global",
-        "Kontrak 6-12 bulan",
+        "Penempatan di armada kapal perikanan global",
+        "Kontrak 24 bulan",
         "Kompensasi sesuai standar ICCPR",
         "Support penuh selama kontrak"
       ]
@@ -223,11 +245,11 @@
     {
       "id": 3,
       "title": "Kerja Sama Internasional",
-      "description": "Bermitra dengan shipping companies terkemuka di seluruh dunia untuk peluang penempatan kerja ABK.",
+      "description": "Bermitra dengan perusahaan perikanan terkemuka di seluruh dunia untuk peluang penempatan kerja Pelaut di kapal perikanan.",
       "icon": "Globe",
       "features": [
         "Network global",
-        "Partnership dengan major operators",
+        "Partnership dengan perusahaan perikanan major",
         "Multi-national crew",
         "Placement opportunities"
       ]
@@ -253,11 +275,11 @@
   ],
   "seo": {
     "keywords": [
-      "ABK",
-      "rekrutmen ABK",
-      "penempatan ABK",
-      "kerja laut",
-      "rekrutmen maritim"
+      "Pelaut kapal perikanan",
+      "rekrutmen Pelaut perikanan",
+      "penempatan Pelaut kapal perikanan",
+      "kerja kapal perikanan",
+      "rekrutmen maritim perikanan"
     ],
     "author": "PT. Duta Samudera Bahari"
   },
@@ -265,7 +287,7 @@
     {
       "id": "1",
       "title": "Selamat Datang di PT. Duta Samudera Bahari",
-      "description": "Kami menghadirkan solusi terpadu untuk pemberangkatan dan penempatan ABK dengan standar internasional.",
+      "description": "Kami menghadirkan solusi terpadu untuk pemberangkatan dan penempatan Pelaut khusus kapal perikanan dengan standar internasional.",
       "author": "Tim Komunikasi",
       "date": "2024-01-20",
       "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop",
@@ -300,13 +322,13 @@
       {
         "number": "3",
         "title": "Matching & Persiapan",
-        "description": "Matching dengan posisi yang sesuai dan persiapan akhir sebelum penempatan",
+        "description": "Matching dengan posisi di kapal perikanan yang sesuai dan persiapan akhir sebelum penempatan",
         "icon": "Shield"
       },
       {
         "number": "4",
         "title": "Penempatan",
-        "description": "Ditempatkan di kapal yang sesuai dengan kualifikasi dan pengalaman Anda",
+        "description": "Ditempatkan di kapal perikanan yang sesuai dengan kualifikasi dan pengalaman Anda",
         "icon": "CheckCircle2"
       }
     ],
@@ -359,12 +381,450 @@
       },
       {
         "q": "Bagaimana jaminan penempatan?",
-        "a": "Kami memiliki partnership dengan ratusan perusahaan pelayaran internasional yang menjamin penempatan bagi kandidat yang memenuhi syarat."
+        "a": "Kami memiliki partnership dengan ratusan perusahaan perikanan internasional yang menjamin penempatan bagi kandidat yang memenuhi syarat."
       },
       {
         "q": "Apa saja benefit yang diterima saat bekerja?",
         "a": "Gaji kompetitif, asuransi kesehatan, tunjangan keluarga, bonus, dan dukungan selama kontrak."
       }
     ]
+  },
+  "jobVacancies": {
+    "countries": [
+      {
+        "name": "China",
+        "href": "/lowongan-kerja/china",
+        "description": "Lowongan kerja untuk kapal perikanan berbendera China dengan kontrak internasional",
+        "flag": "🇨🇳"
+      },
+      {
+        "name": "Taiwan",
+        "href": "/lowongan-kerja/taiwan",
+        "description": "Lowongan kerja untuk kapal perikanan berbendera Taiwan dengan kontrak internasional",
+        "flag": "🇹🇼"
+      }
+    ],
+    "china": [
+      {
+        "id": 1,
+        "title": "Cumi",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 45.000.000 - Rp 65.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Chief Officer STCW",
+          "Pengalaman minimal 3 tahun",
+          "Bahasa Inggris lancar",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan keluarga",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan China",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": true
+      },
+      {
+        "id": 2,
+        "title": "Longline",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 50.000.000 - Rp 75.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Chief Engineer STCW",
+          "Pengalaman minimal 5 tahun",
+          "Class 1 CoC",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan keluarga",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan China",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": true
+      },
+      {
+        "id": 3,
+        "title": "Purse Seine",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 15.000.000 - Rp 25.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Able Seaman STCW",
+          "Pengalaman minimal 1 tahun",
+          "Bahasa Inggris aktif",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan makan",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan China",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": true
+      },
+      {
+        "id": 4,
+        "title": "Trawler",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 12.000.000 - Rp 18.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Oiler STCW",
+          "Pengalaman minimal 6 bulan",
+          "Basic safety training",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan makan",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan China",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": true
+      },
+      {
+        "id": 5,
+        "title": "Cook",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 10.000.000 - Rp 15.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Cook STCW",
+          "Pengalaman memasak",
+          "Hygiene certificate",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan makan",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan China",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": false
+      },
+      {
+        "id": 6,
+        "title": "Motorman",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 14.000.000 - Rp 20.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Motorman STCW",
+          "Pengalaman engine room",
+          "Basic safety training",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan makan",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan China",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": false
+      }
+    ],
+    "taiwan": [
+      {
+        "id": 1,
+        "title": "Cumi",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 45.000.000 - Rp 65.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Chief Officer STCW",
+          "Pengalaman minimal 3 tahun",
+          "Bahasa Inggris lancar",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan keluarga",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan Taiwan",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": true
+      },
+      {
+        "id": 2,
+        "title": "Longline",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 50.000.000 - Rp 75.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Chief Engineer STCW",
+          "Pengalaman minimal 5 tahun",
+          "Class 1 CoC",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan keluarga",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan Taiwan",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": true
+      },
+      {
+        "id": 5,
+        "title": "Cook",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 10.000.000 - Rp 15.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Cook STCW",
+          "Pengalaman memasak",
+          "Hygiene certificate",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan makan",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan Taiwan",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": false
+      },
+      {
+        "id": 6,
+        "title": "Motorman",
+        "location": "Internasional",
+        "type": "Full-time",
+        "salary": "Rp 14.000.000 - Rp 20.000.000/bulan",
+        "duration": "6-12 bulan",
+        "requirements": [
+          "Sertifikat Motorman STCW",
+          "Pengalaman engine room",
+          "Basic safety training",
+          "Medical fitness certificate"
+        ],
+        "benefits": [
+          "Asuransi kesehatan",
+          "Tunjangan makan",
+          "Bonus performance",
+          "Paid leave"
+        ],
+        "qualifications": [
+          "Bahasa Mandarin",
+          "Pengalaman di kapal perikanan Taiwan",
+          "Kemampuan kerja tim",
+          "Komitmen keselamatan"
+        ],
+        "featured": false
+      }
+    ],
+    "generalRequirements": [
+      {
+        "title": "Usia",
+        "description": "18-55 tahun",
+        "icon": "Users"
+      },
+      {
+        "title": "Pendidikan",
+        "description": "SMA sederajat",
+        "icon": "Briefcase"
+      },
+      {
+        "title": "Kesehatan",
+        "description": "Medical fitness",
+        "icon": "Star"
+      },
+      {
+        "title": "Pengalaman",
+        "description": "Bervariasi per posisi",
+        "icon": "Clock"
+      }
+    ]
+  },
+  "homepage": {
+    "hero": {
+      "title": "Karir Cemerlang di Industri Maritim Global",
+      "description": "Kami menyediakan layanan rekrutmen dan penempatan Pelaut berkualitas tinggi khusus untuk kapal perikanan dengan standar internasional terbaik. Bergabunglah dengan ribuan Pelaut sukses yang telah ditempatkan di kapal-kapal perikanan terkemuka dunia.",
+      "ctaText": "Daftar Sekarang",
+      "ctaHref": "/contact",
+      "secondaryCtaText": "Pelajari Layanan",
+      "secondaryCtaHref": "/services",
+      "backgroundVideo": "/Video/hero-video.mp4"
+    },
+    "companyProfile": {
+      "title": "Tentang {company.name}",
+      "description": "Sejak didirikan pada tahun 2015, kami telah menjadi mitra terpercaya dalam rekrutmen dan penempatan Pelaut khusus kapal perikanan di Indonesia. Dengan komitmen penuh terhadap profesionalisme dan standar internasional, kami telah membantu ribuan Pelaut mendapatkan penempatan di kapal-kapal perikanan terkemuka dunia.",
+      "stats": [
+        {
+          "value": "10+",
+          "label": "Tahun Pengalaman"
+        },
+        {
+          "value": "5000+",
+          "label": "Pelaut Terlatih"
+        },
+        {
+          "value": "15+",
+          "label": "Negara Partner"
+        }
+      ]
+    },
+    "whyChooseUs": [
+      {
+        "icon": "Award",
+        "title": "Standar Internasional",
+        "description": "Seleksi Pelaut yang ketat sesuai standar maritim internasional"
+      },
+      {
+        "icon": "Users",
+        "title": "Tim Profesional",
+        "description": "Tim berpengalaman siap mendampingi proses rekrutmen dan penempatan Anda"
+      },
+      {
+        "icon": "Globe",
+        "title": "Jangkauan Global",
+        "description": "Partnership dengan perusahaan perikanan terkemuka di seluruh dunia"
+      }
+    ],
+    "testimonials": [
+      {
+        "id": "1",
+        "name": "Ahmad Rizki",
+        "position": "Chief Engineer",
+        "company": "Maersk Line",
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+        "content": "PT. Duta Samudera Bahari memberikan pelayanan yang sangat profesional untuk penempatan di kapal perikanan. Proses rekrutmen yang transparan dan dukungan penuh selama kontrak membuat saya merasa aman dan terlindungi.",
+        "rating": 5,
+        "contractDuration": "24 bulan",
+        "shipType": "Container Ship"
+      },
+      {
+        "id": "2",
+        "name": "Budi Santoso",
+        "position": "Able Seaman",
+        "company": "COSCO Shipping",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+        "content": "Berkat bantuan PT. Duta Samudera Bahari, saya berhasil mendapatkan penempatan di kapal perikanan internasional dengan gaji yang sangat memuaskan. Tim mereka sangat membantu dari awal hingga akhir.",
+        "rating": 5,
+        "contractDuration": "18 bulan",
+        "shipType": "Bulk Carrier"
+      },
+      {
+        "id": "3",
+        "name": "Sari Wijaya",
+        "position": "Cook",
+        "company": "Evergreen Marine",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+        "content": "Sebagai perempuan di industri maritim, saya merasa sangat didukung oleh PT. Duta Samudera Bahari. Mereka memastikan penempatan yang aman dan sesuai dengan kualifikasi saya.",
+        "rating": 5,
+        "contractDuration": "12 bulan",
+        "shipType": "Tanker"
+      },
+      {
+        "id": "4",
+        "name": "Eko Prasetyo",
+        "position": "Second Officer",
+        "company": "MSC Mediterranean",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+        "content": "Pelayanan after-sales yang luar biasa! Bahkan setelah ditempatkan, tim PT. Duta Samudera Bahari tetap memantau dan memberikan dukungan ketika dibutuhkan.",
+        "rating": 5,
+        "contractDuration": "24 bulan",
+        "shipType": "Cruise Ship"
+      },
+      {
+        "id": "5",
+        "name": "Maya Indira",
+        "position": "Ordinary Seaman",
+        "company": "CMA CGM",
+        "image": "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face",
+        "content": "Proses yang cepat dan efisien. Dalam waktu 3 minggu saja saya sudah mendapatkan penempatan di kapal perikanan yang sesuai dengan keinginan saya. Terima kasih PT. Duta Samudera Bahari!",
+        "rating": 5,
+        "contractDuration": "20 bulan",
+        "shipType": "Container Ship"
+      },
+      {
+        "id": "6",
+        "name": "Rudi Hartono",
+        "position": "Bosun",
+        "company": "Hapag-Lloyd",
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+        "content": "Sudah 3 kali saya menggunakan jasa PT. Duta Samudera Bahari untuk penempatan. Konsistensi pelayanan dan kualitas penempatan mereka tidak pernah mengecewakan.",
+        "rating": 5,
+        "contractDuration": "24 bulan",
+        "shipType": "Bulk Carrier"
+      }
+    ],
+    "cta": {
+      "title": "Siap Memulai Karir Maritim Anda?",
+      "description": "Daftarkan diri Anda sekarang dan dapatkan kesempatan penempatan di armada kapal perikanan terkemuka dunia",
+      "primaryButton": {
+        "text": "Daftar Sekarang",
+        "href": "/contact"
+      },
+      "secondaryButton": {
+        "text": "Pelajari Lebih Lanjut",
+        "href": "/services"
+      }
+    }
   }
 }

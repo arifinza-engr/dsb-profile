@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 import {
   FaFacebookF,
@@ -11,14 +10,38 @@ import {
 import {
   COMPANY_NAME,
   COMPANY_LOGO,
-  COMPANY_EMAIL,
-  COMPANY_PHONE,
-  COMPANY_ADDRESS,
   NAVIGATION,
 } from "@/lib/constants";
+import { getPartners } from "@/lib/cms";
+import { Partner } from "@/lib/types";
 
-export function Footer() {
+async function getCompanyData() {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/company`, {
+      cache: 'no-store'
+    });
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {
+    console.error('Error fetching company data:', error);
+  }
+  return null;
+}
+
+async function getPartnersData(): Promise<Partner[]> {
+  try {
+    return await getPartners();
+  } catch (error) {
+    console.error('Error fetching partners data:', error);
+    return [];
+  }
+}
+
+export async function Footer() {
   const currentYear = new Date().getFullYear();
+  const companyData = await getCompanyData();
+  const partners = await getPartnersData();
 
   return (
     <footer className="bg-slate-900 dark:bg-slate-950 text-white">
@@ -28,15 +51,18 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <img
+              <Image
                 src={COMPANY_LOGO}
                 alt={`${COMPANY_NAME} Logo`}
-                className="w-8 h-8 rounded-lg object-cover"
+                width={32}
+                height={32}
+                className="rounded-lg object-cover"
+                priority
               />
               <h3 className="font-bold text-lg">{COMPANY_NAME}</h3>
             </div>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Perusahaan terkempin dalam pemberangkatan ABK dengan standar
+              Perusahaan terkemuka alam pemberangkatan Pelaut dengan standar
               internasional tertinggi.
             </p>
             <div className="flex gap-3">
@@ -129,27 +155,53 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                <span>{COMPANY_ADDRESS}</span>
+                <span>{companyData?.address || "Jl. Pelabuhan No. 123, Jakarta 14120, Indonesia"}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-blue-400 flex-shrink-0" />
                 <a
-                  href={`tel:${COMPANY_PHONE}`}
+                  href={`tel:${companyData?.phone || "+622112345678"}`}
                   className="hover:text-white transition-colors"
                 >
-                  {COMPANY_PHONE}
+                  {companyData?.phone || "+62-21-1234-5678"}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
                 <a
-                  href={`mailto:${COMPANY_EMAIL}`}
+                  href={`mailto:${companyData?.email || "info@dutasamudera.com"}`}
                   className="hover:text-white transition-colors"
                 >
-                  {COMPANY_EMAIL}
+                  {companyData?.email || "info@dutasamudera.com"}
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Partners Section */}
+        <div className="mt-8 pt-8 border-t border-gray-700">
+          <h4 className="font-bold text-lg mb-4 text-center">Mitra Kami</h4>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {partners.map((partner: Partner) => (
+              <div
+                key={partner.id}
+                className="flex flex-col items-center space-y-2"
+              >
+                <div className="w-16 h-16 bg-white rounded-lg p-2 flex items-center justify-center">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-xs text-gray-300 text-center max-w-[100px]">
+                  {partner.name}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import {
   Building2,
   Users,
@@ -15,7 +16,10 @@ import {
   Shield,
 } from "lucide-react";
 import { COMPANY_NAME } from "@/lib/constants";
-import companyData from "@/content/data.json";
+import { getCompanyProfile, getPartners } from "@/lib/cms";
+import { Partner } from "@/lib/types";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: `${COMPANY_NAME} - Tentang Kami`,
@@ -23,7 +27,9 @@ export const metadata: Metadata = {
     "Pelajari lebih lanjut tentang PT. Duta Samudera Bahari, visi misi, struktur perusahaan, dan kemitraan internasional kami.",
 };
 
-export default function TentangPage() {
+export default async function TentangPage() {
+  const company = await getCompanyProfile();
+  const partners = await getPartners();
   return (
     <>
       {/* Company Profile */}
@@ -44,18 +50,19 @@ export default function TentangPage() {
                     PT. Duta Samudera Bahari
                   </strong>{" "}
                   didirikan pada tahun 2010 dengan komitmen untuk menjadi
-                  perusahaan rekrutmen dan penempatan Anak Buah Kapal (ABK)
-                  terdepan di Indonesia. Kami telah membangun reputasi sebagai
-                  mitra terpercaya dalam industri maritim global.
+                  perusahaan rekrutmen dan penempatan Anak Buah Kapal (Pelaut)
+                  khusus kapal perikanan terdepan di Indonesia. Kami telah
+                  membangun reputasi sebagai mitra terpercaya dalam industri
+                  perikanan maritim global.
                 </p>
 
                 <p className="leading-relaxed">
                   Dengan pengalaman lebih dari satu dekade, kami telah berhasil
-                  menempatkan ribuan ABK berkualitas di berbagai jenis kapal dan
-                  armada internasional. Komitmen kami terhadap profesionalisme,
-                  transparansi, dan standar internasional menjadikan kami
-                  pilihan utama bagi shipping companies dan ABK di seluruh
-                  dunia.
+                  menempatkan ribuan Pelaut berkualitas di berbagai jenis kapal
+                  perikanan dan armada perikanan internasional. Komitmen kami
+                  terhadap profesionalisme, transparansi, dan standar
+                  internasional menjadikan kami pilihan utama bagi perusahaan
+                  perikanan dan Pelaut di seluruh dunia.
                 </p>
 
                 <p className="leading-relaxed">
@@ -69,7 +76,7 @@ export default function TentangPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    10+
+                    {new Date().getFullYear() - company.founded}+
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Tahun Pengalaman
@@ -77,15 +84,15 @@ export default function TentangPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    8000+
+                    5000+
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    ABK Ditempatkan
+                    Pelaut Ditempatkan
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    25+
+                    15+
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Negara Partner
@@ -93,7 +100,7 @@ export default function TentangPage() {
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary mb-2">
-                    50+
+                    {company.employees}+
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
                     Karyawan
@@ -139,11 +146,7 @@ export default function TentangPage() {
               </div>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
-                Menjadi perusahaan rekrutmen dan penempatan ABK terpercaya dan
-                profesional dengan standar internasional tertinggi, yang
-                memberikan peluang karir terbaik dan kesejahteraan optimal bagi
-                setiap ABK serta menjadi mitra strategis bagi industri maritim
-                global.
+                {company.visionMission.vision}
               </p>
             </div>
 
@@ -157,51 +160,16 @@ export default function TentangPage() {
               </div>
 
               <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                    ✓
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    Menyediakan layanan rekrutmen dan penempatan ABK berkualitas
-                    tinggi sesuai kebutuhan industri maritim global
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                    ✓
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    Memastikan kesejahteraan, perlindungan, dan hak ABK sesuai
-                    standar hukum internasional (ICCPR, MLC)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                    ✓
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    Bermitra dengan shipping companies terkemuka dan memberikan
-                    peluang karir internasional
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                    ✓
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    Memastikan proses rekrutmen yang transparan, adil, dan
-                    sesuai standar internasional
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary dark:text-blue-400 font-bold text-lg">
-                    ✓
-                  </span>
-                  <span className="text-gray-600 dark:text-gray-300">
-                    Mengembangkan kompetensi SDM maritim Indonesia melalui
-                    pelatihan dan sertifikasi berkelanjutan
-                  </span>
-                </li>
+                {company.visionMission.mission.map((mission, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span className="text-primary dark:text-blue-400 font-bold text-lg">
+                      ✓
+                    </span>
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {mission}
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -212,140 +180,24 @@ export default function TentangPage() {
       <section className="py-20 bg-white dark:bg-slate-900">
         <div className="container-maritime">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Struktur Organisasi
+            <h2 className="text-4xl font-bold text-foreground mb-0">
+              Struktur Perusahaan
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Tatanan organisasi perusahaan dari komisaris hingga kepala divisi
-            </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
           </div>
 
-          {/* Organizational Chart */}
-          <div className="max-w-7xl mx-auto">
-            <div className="relative">
-              {/* Level 1 - Komisaris Utama */}
-              <div className="flex justify-center mb-12">
-                {companyData.company.organizationalStructure
-                  .filter((person) => person.level === 1)
-                  .map((person) => (
-                    <div
-                      key={person.id}
-                      className="relative bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-2xl p-6 md:p-8 shadow-xl text-white text-center transform hover:scale-105 transition-all duration-300 max-w-sm mx-auto"
-                    >
-                      <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden mx-auto mb-4 md:mb-6 border-4 border-white shadow-lg">
-                        <img
-                          src={person.photo}
-                          alt={person.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-2">
-                        {person.name}
-                      </h3>
-                      <p className="text-blue-100 font-semibold text-base md:text-lg">
-                        {person.position}
-                      </p>
-                      {/* Connecting line down */}
-                      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-1 h-6 bg-blue-400 dark:bg-blue-500" />
-                    </div>
-                  ))}
-              </div>
-
-              {/* Level 2 - Direktur Utama */}
-              <div className="flex justify-center mb-12">
-                {companyData.company.organizationalStructure
-                  .filter((person) => person.level === 2)
-                  .map((person) => (
-                    <div
-                      key={person.id}
-                      className="relative bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-2xl p-6 md:p-7 shadow-xl text-white text-center transform hover:scale-105 transition-all duration-300 max-w-sm mx-auto"
-                    >
-                      <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden mx-auto mb-4 md:mb-5 border-4 border-white shadow-lg">
-                        <img
-                          src={person.photo}
-                          alt={person.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h3 className="text-lg md:text-xl font-bold mb-2">
-                        {person.name}
-                      </h3>
-                      <p className="text-blue-100 font-semibold text-sm md:text-base">
-                        {person.position}
-                      </p>
-                      {/* Connecting line down */}
-                      <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-1 h-6 bg-blue-400 dark:bg-blue-500" />
-                    </div>
-                  ))}
-              </div>
-
-              {/* Level 3 - Direktur */}
-              <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 mb-12 relative">
-                {/* Horizontal connecting line - hidden on mobile */}
-                <div className="hidden md:block absolute top-12 left-1/2 transform -translate-x-1/2 w-80 h-1 bg-blue-400 dark:bg-blue-500" />
-
-                {companyData.company.organizationalStructure
-                  .filter((person) => person.level === 3)
-                  .map((person, index) => (
-                    <div
-                      key={person.id}
-                      className="relative bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border-2 border-blue-200 dark:border-blue-700 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-xl max-w-xs mx-auto md:mx-0"
-                    >
-                      <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-blue-400">
-                        <img
-                          src={person.photo}
-                          alt={person.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <h3 className="text-lg font-bold text-foreground mb-1">
-                        {person.name}
-                      </h3>
-                      <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">
-                        {person.position}
-                      </p>
-                      {/* Vertical line up to horizontal connector - hidden on mobile */}
-                      <div className="hidden md:block absolute -top-6 left-1/2 transform -translate-x-1/2 w-1 h-6 bg-blue-400 dark:bg-blue-500" />
-                      {/* Vertical line down - hidden on mobile */}
-                      <div className="hidden md:block absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-1 h-8 bg-blue-400 dark:bg-blue-500" />
-                    </div>
-                  ))}
-              </div>
-
-              {/* Level 4 - Kepala Bagian */}
-              <div className="flex justify-center">
-                <div className="relative w-full max-w-4xl">
-                  {/* Horizontal connecting line for department heads - hidden on mobile */}
-                  <div className="hidden md:block absolute top-10 left-1/2 transform -translate-x-1/2 w-[600px] h-1 bg-blue-300 dark:bg-blue-600" />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10 px-4 md:px-0">
-                    {companyData.company.organizationalStructure
-                      .filter((person) => person.level === 4)
-                      .map((person) => (
-                        <div
-                          key={person.id}
-                          className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-700 dark:to-slate-800 rounded-xl p-5 shadow-md border border-blue-200 dark:border-blue-600 text-center transform hover:scale-105 transition-all duration-300 hover:shadow-lg max-w-xs mx-auto"
-                        >
-                          <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-3 border-3 border-blue-300">
-                            <img
-                              src={person.photo}
-                              alt={person.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          <h3 className="text-md font-bold text-foreground mb-1">
-                            {person.name}
-                          </h3>
-                          <p className="text-blue-600 dark:text-blue-400 font-semibold text-sm">
-                            {person.position}
-                          </p>
-                          {/* Vertical line up to horizontal connector - hidden on mobile */}
-                          <div className="hidden md:block absolute -top-8 left-1/2 transform -translate-x-1/2 w-1 h-8 bg-blue-300 dark:bg-blue-600" />
-                        </div>
-                      ))}
-                  </div>
-                </div>
+          {/* Organizational Chart Image */}
+          <div className="max-w-4xl mx-auto">
+            <div className="">
+              <div className="relative w-full h-auto">
+                <Image
+                  src="/Image/struktur1.png"
+                  alt="Struktur Organisasi PT. Duta Samudera Bahari"
+                  width={2000}
+                  height={1080}
+                  className="w-full h-auto object-contain rounded-lg"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -372,37 +224,37 @@ export default function TentangPage() {
                 <div className="flex items-center gap-3">
                   <Building2 className="w-5 h-5 text-primary" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <strong>Nama:</strong> PT. Duta Samudera Bahari
+                    <strong>Nama:</strong> {company.name}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Calendar className="w-5 h-5 text-primary" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <strong>Didirikan:</strong> 2010
+                    <strong>Didirikan:</strong> {company.founded}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-primary" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <strong>Alamat:</strong> Jakarta, Indonesia
+                    <strong>Alamat:</strong> {company.address}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-primary" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <strong>Telepon:</strong> +62 (0)21-XXX-XXXX
+                    <strong>Telepon:</strong> {company.phone}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-primary" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <strong>Email:</strong> info@dutasam.com
+                    <strong>Email:</strong> {company.email}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Globe className="w-5 h-5 text-primary" />
                   <span className="text-gray-600 dark:text-gray-300">
-                    <strong>Website:</strong> dutasam.com
+                    <strong>Website:</strong> {company.website}
                   </span>
                 </div>
               </div>
@@ -418,7 +270,7 @@ export default function TentangPage() {
                   <Award className="w-5 h-5 text-primary mt-1" />
                   <div>
                     <strong className="text-foreground">
-                      Lisensi Pemberangkatan ABK
+                      Lisensi Pemberangkatan Pelaut
                     </strong>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
                       Dikeluarkan oleh Kementerian Ketenagakerjaan RI
@@ -470,71 +322,48 @@ export default function TentangPage() {
               Kemitraan Strategis
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Kami bangga bermitra dengan shipping companies terkemuka di
-              seluruh dunia untuk memberikan peluang karir terbaik bagi ABK
-              Indonesia
+              Kami bangga bermitra dengan perusahaan perikanan terkemuka di
+              seluruh dunia untuk memberikan peluang karir terbaik bagi Pelaut
+              Indonesia di kapal perikanan
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-primary to-blue-400 mx-auto rounded-full mt-4" />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {[
-              {
-                icon: Ship,
-                title: "Container Lines",
-                count: "15+",
-                description: "Perusahaan pelayaran kontainer internasional",
-              },
-              {
-                icon: Globe,
-                title: "Bulk Carriers",
-                count: "12+",
-                description: "Operator kapal curah dan tanker",
-              },
-              {
-                icon: Handshake,
-                title: "Cruise Lines",
-                count: "8+",
-                description: "Perusahaan kapal pesiar mewah",
-              },
-              {
-                icon: Users,
-                title: "Offshore Companies",
-                count: "10+",
-                description: "Perusahaan offshore dan oil rig",
-              },
-            ].map((partner, idx) => {
-              const Icon = partner.icon;
-              return (
-                <div
-                  key={idx}
-                  className="text-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
-                >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-lg mb-4">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    {partner.count}
-                  </div>
-                  <h3 className="text-lg font-bold text-foreground mb-2">
-                    {partner.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300">
-                    {partner.description}
-                  </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {partners.map((partner: Partner, idx: number) => (
+              <div
+                key={partner.id}
+                className="text-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-slate-800 dark:to-slate-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-lg mb-4 overflow-hidden">
+                  {partner.logo ? (
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <Building2 className="w-8 h-8 text-white" />
+                  )}
                 </div>
-              );
-            })}
+                <h3 className="text-lg font-bold text-foreground mb-2">
+                  {partner.name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  {partner.description}
+                </p>
+              </div>
+            ))}
           </div>
 
           {/* Partnership Benefits */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 rounded-2xl p-8 text-white">
+          {/* <div className="bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-900 dark:to-blue-950 rounded-2xl p-8 text-white">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold mb-2">
                 Keunggulan Kemitraan Kami
               </h3>
               <p className="text-blue-100">
-                Mengapa shipping companies memilih PT. Duta Samudera Bahari
+                Mengapa perusahaan perikanan memilih PT. Duta Samudera Bahari
                 sebagai partner
               </p>
             </div>
@@ -546,8 +375,8 @@ export default function TentangPage() {
                 </div>
                 <h4 className="font-bold mb-2">Kualitas Terjamin</h4>
                 <p className="text-sm text-blue-100">
-                  Seleksi ketat dan pelatihan berkelanjutan memastikan ABK
-                  berkualitas tinggi
+                  Seleksi ketat dan pelatihan berkelanjutan memastikan Pelaut
+                  kapal perikanan berkualitas tinggi
                 </p>
               </div>
               <div className="text-center">
@@ -570,7 +399,7 @@ export default function TentangPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

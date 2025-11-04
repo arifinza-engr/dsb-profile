@@ -37,6 +37,7 @@ export interface CompanyProfile {
   phone: string;
   address: string;
   website: string;
+  logo?: string;
   founded: number;
   employees: number;
   visionMission: {
@@ -90,4 +91,35 @@ export interface GalleryFormData {
   category: string;
   date: string;
   alt: string;
+}
+
+// Activity Types
+export interface Activity {
+  id: number;
+  type: string;
+  title: string;
+}
+
+// Job Types
+export interface Job {
+  id: number;
+  title: string;
+  location: string;
+  type: string;
+  salary: string;
+  duration: string;
+  requirements: string[];
+  benefits: string[];
+  qualifications: string[];
+  featured: boolean;
+  country: string;
+}
+
+// Partner Types
+export interface Partner {
+  id: number;
+  name: string;
+  description: string;
+  logo: string;
+  website: string;
 }

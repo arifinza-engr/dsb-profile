@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Calendar, User, ArrowRight, Clock } from "lucide-react";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
+import { getOptimizedImageProps, IMAGE_SIZES } from "@/lib/image-utils";
 
 interface NewsCardProps {
   post: NewsPost;
@@ -37,8 +38,9 @@ export function NewsCard({ post, featured = false }: NewsCardProps) {
           }`}
         >
           <Image
-            src={post.image}
-            alt={post.title}
+            {...getOptimizedImageProps(post.image, post.title, {
+              sizes: IMAGE_SIZES.news,
+            })}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-300"
           />

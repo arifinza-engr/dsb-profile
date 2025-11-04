@@ -2,10 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Galeri - PT. Duta Samudera Bahari",
-  description: "Dokumentasi kegiatan, pelatihan, dan pengalaman ABK kami",
+  description: "Dokumentasi kegiatan, pelatihan, dan pengalaman Pelaut kami",
   openGraph: {
     title: "Galeri - PT. Duta Samudera Bahari",
-    description: "Dokumentasi kegiatan, pelatihan, dan pengalaman ABK kami",
+    description: "Dokumentasi kegiatan, pelatihan, dan pengalaman Pelaut kami",
     type: "website",
   },
 };
