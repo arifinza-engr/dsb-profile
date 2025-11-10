@@ -15,8 +15,7 @@ export async function GET(request: NextRequest) {
           .select()
           .from(jobVacancies)
           .where(eq(jobVacancies.country, country))
-          .all()
-      : await db.select().from(jobVacancies).all();
+      : await db.select().from(jobVacancies);
 
     return NextResponse.json(jobs);
   } catch (error) {

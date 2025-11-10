@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { jobVacancies } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { isUUID } from 'validator';
 
 // GET /api/jobs/[id] - Get single job vacancy
 export async function GET(
@@ -10,13 +11,9 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
-    const jobItem = await db.select().from(jobVacancies).where(eq(jobVacancies.id, parsedId)).limit(1);
+    const jobItem = await db.select().from(jobVacancies).where(eq(jobVacancies.id, id)).limit(1);
 
     if (jobItem.length === 0) {
       return NextResponse.json({ error: 'Job vacancy not found' }, { status: 404 });
@@ -36,11 +33,7 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
     const body = await request.json();
     const {
@@ -70,7 +63,7 @@ export async function PUT(
         featured,
         country,
       })
-      .where(eq(jobVacancies.id, parsedId))
+      .where(eq(jobVacancies.id, id))
       .returning();
 
     if (updatedItem.length === 0) {
@@ -91,15 +84,11 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
     const deletedItem = await db
       .delete(jobVacancies)
-      .where(eq(jobVacancies.id, parsedId))
+      .where(eq(jobVacancies.id, id))
       .returning();
 
     if (deletedItem.length === 0) {

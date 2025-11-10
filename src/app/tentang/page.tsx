@@ -112,7 +112,16 @@ export default async function TentangPage() {
             {/* Company Image */}
             <div className="relative">
               <div className="bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900 dark:to-blue-800 rounded-2xl p-12 text-center">
-                <div className="text-8xl opacity-20 mb-4">⚓</div>
+                <div className="mb-6">
+                  <Image
+                    src="/Image/logo.png"
+                    alt={`${COMPANY_NAME} Logo`}
+                    width={120}
+                    height={120}
+                    className="mx-auto opacity-90"
+                    priority
+                  />
+                </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">
                   {COMPANY_NAME}
                 </h3>

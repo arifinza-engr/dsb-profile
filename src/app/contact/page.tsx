@@ -9,14 +9,19 @@ import {
 
 async function getCompanyData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/company`, {
-      cache: 'no-store'
-    });
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+      }/api/company`,
+      {
+        cache: "no-store",
+      }
+    );
     if (response.ok) {
       return await response.json();
     }
   } catch (error) {
-    console.error('Error fetching company data:', error);
+    console.error("Error fetching company data:", error);
   }
   return null;
 }
@@ -28,7 +33,9 @@ export default async function ContactPage() {
     {
       icon: MapPin,
       title: "Alamat Kantor",
-      content: companyData?.address || "Jl. Pelabuhan No. 123, Jakarta 14120, Indonesia",
+      content:
+        companyData?.address ||
+        "Jl. Pelabuhan No. 123, Jakarta 14120, Indonesia",
       link: "#",
     },
     {
@@ -115,16 +122,34 @@ export default async function ContactPage() {
                 </h3>
                 <div className="flex gap-4">
                   {[
-                    { name: "Instagram", icon: FaInstagram },
-                    { name: "Facebook", icon: FaFacebookF },
-                    { name: "Twitter", icon: FaXTwitter },
-                    { name: "TikTok", icon: FaTiktok },
+                    {
+                      name: "Instagram",
+                      icon: FaInstagram,
+                      link: "https://www.instagram.com/pt.dutasamuderabahari/",
+                    },
+                    {
+                      name: "Facebook",
+                      icon: FaFacebookF,
+                      link: "https://www.facebook.com/",
+                    },
+                    {
+                      name: "Twitter",
+                      icon: FaXTwitter,
+                      link: "https://twitter.com/",
+                    },
+                    {
+                      name: "TikTok",
+                      icon: FaTiktok,
+                      link: "https://www.tiktok.com/",
+                    },
                   ].map((social, idx) => {
                     const Icon = social.icon;
                     return (
                       <a
                         key={idx}
-                        href="#"
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-12 h-12 flex items-center justify-center bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors"
                         title={social.name}
                       >
@@ -144,14 +169,16 @@ export default async function ContactPage() {
 
       {/* Map Section */}
       <section className="h-96 bg-gray-200 dark:bg-slate-800 relative overflow-hidden">
-        <div className="w-full h-full flex items-center justify-center text-gray-400">
-          <div className="text-center">
-            <MapPin className="w-16 h-16 mx-auto mb-4" />
-            <p className="text-lg">
-              Integrasi Google Maps akan ditampilkan di sini
-            </p>
-          </div>
-        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.321908532524!2d109.3704338395508!3d-6.880962299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6fc552aeddd433%3A0x48e39a1d83022c08!2sPT.%20DUTA%20SAMUDERA%20BAHARI!5e0!3m2!1sid!2sid!4v1762810626836!5m2!1sid!2sid"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="PT. Duta Samudera Bahari Location"
+        ></iframe>
       </section>
 
       {/* FAQ Section */}

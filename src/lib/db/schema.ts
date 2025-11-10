@@ -1,8 +1,18 @@
-import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
+import {
+  pgTable,
+  text,
+  integer,
+  boolean,
+  serial,
+  uuid,
+} from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 
 // Gallery table
-export const gallery = sqliteTable("gallery", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const gallery = pgTable("gallery", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   image: text("image").notNull(),
@@ -12,8 +22,10 @@ export const gallery = sqliteTable("gallery", {
 });
 
 // Company table
-export const company = sqliteTable("company", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const company = pgTable("company", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   name: text("name").notNull(),
   description: text("description").notNull(),
   email: text("email").notNull(),
@@ -28,8 +40,10 @@ export const company = sqliteTable("company", {
 });
 
 // Partners table
-export const partners = sqliteTable("partners", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const partners = pgTable("partners", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   name: text("name").notNull(),
   description: text("description").notNull(),
   logo: text("logo").notNull(),
@@ -37,8 +51,10 @@ export const partners = sqliteTable("partners", {
 });
 
 // Services table
-export const services = sqliteTable("services", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const services = pgTable("services", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   icon: text("icon").notNull(),
@@ -46,8 +62,10 @@ export const services = sqliteTable("services", {
 });
 
 // News table
-export const news = sqliteTable("news", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const news = pgTable("news", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   author: text("author").notNull(),
@@ -63,8 +81,10 @@ export const news = sqliteTable("news", {
 });
 
 // Job vacancies table
-export const jobVacancies = sqliteTable("job_vacancies", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const jobVacancies = pgTable("job_vacancies", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   location: text("location").notNull(),
   type: text("type").notNull(),
@@ -73,13 +93,15 @@ export const jobVacancies = sqliteTable("job_vacancies", {
   requirements: text("requirements").notNull(), // JSON string
   benefits: text("benefits").notNull(), // JSON string
   qualifications: text("qualifications").notNull(), // JSON string
-  featured: integer("featured", { mode: "boolean" }).notNull(),
+  featured: boolean("featured").notNull(),
   country: text("country").notNull(), // 'china' or 'taiwan'
 });
 
 // Testimonials table
-export const testimonials = sqliteTable("testimonials", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const testimonials = pgTable("testimonials", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   name: text("name").notNull(),
   position: text("position").notNull(),
   company: text("company").notNull(),
@@ -91,8 +113,10 @@ export const testimonials = sqliteTable("testimonials", {
 });
 
 // Organizational structure table
-export const organizationalStructure = sqliteTable("organizational_structure", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const organizationalStructure = pgTable("organizational_structure", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   name: text("name").notNull(),
   position: text("position").notNull(),
   photo: text("photo").notNull(),
@@ -101,15 +125,19 @@ export const organizationalStructure = sqliteTable("organizational_structure", {
 });
 
 // Social media table
-export const socialMedia = sqliteTable("social_media", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const socialMedia = pgTable("social_media", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   platform: text("platform").notNull(), // 'facebook', 'instagram', 'linkedin'
   url: text("url").notNull(),
 });
 
 // Service process steps table
-export const serviceProcessSteps = sqliteTable("service_process_steps", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const serviceProcessSteps = pgTable("service_process_steps", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   number: text("number").notNull(),
   title: text("title").notNull(),
   description: text("description").notNull(),
@@ -117,10 +145,12 @@ export const serviceProcessSteps = sqliteTable("service_process_steps", {
 });
 
 // Service additional services table
-export const serviceAdditionalServices = sqliteTable(
+export const serviceAdditionalServices = pgTable(
   "service_additional_services",
   {
-    id: integer("id").primaryKey({ autoIncrement: true }),
+    id: uuid("id")
+      .default(sql`gen_random_uuid()`)
+      .primaryKey(),
     title: text("title").notNull(),
     description: text("description").notNull(),
     features: text("features").notNull(), // JSON string
@@ -128,23 +158,29 @@ export const serviceAdditionalServices = sqliteTable(
 );
 
 // Service qualifications table
-export const serviceQualifications = sqliteTable("service_qualifications", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const serviceQualifications = pgTable("service_qualifications", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   type: text("type").notNull(), // 'requirements' or 'documents'
   title: text("title").notNull(),
   description: text("description").notNull(),
 });
 
 // Service FAQ table
-export const serviceFaq = sqliteTable("service_faq", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const serviceFaq = pgTable("service_faq", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   question: text("question").notNull(),
   answer: text("answer").notNull(),
 });
 
 // Homepage hero table
-export const homepageHero = sqliteTable("homepage_hero", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const homepageHero = pgTable("homepage_hero", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   ctaText: text("cta_text").notNull(),
@@ -155,24 +191,30 @@ export const homepageHero = sqliteTable("homepage_hero", {
 });
 
 // Homepage company profile table
-export const homepageCompanyProfile = sqliteTable("homepage_company_profile", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const homepageCompanyProfile = pgTable("homepage_company_profile", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   stats: text("stats").notNull(), // JSON string
 });
 
 // Homepage why choose us table
-export const homepageWhyChooseUs = sqliteTable("homepage_why_choose_us", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const homepageWhyChooseUs = pgTable("homepage_why_choose_us", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   icon: text("icon").notNull(),
   title: text("title").notNull(),
   description: text("description").notNull(),
 });
 
 // Homepage CTA table
-export const homepageCta = sqliteTable("homepage_cta", {
-  id: integer("id").primaryKey({ autoIncrement: true }),
+export const homepageCta = pgTable("homepage_cta", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   primaryButtonText: text("primary_button_text").notNull(),

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { services } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { isUUID } from 'validator';
 
 // GET /api/services/[id] - Get single service
 export async function GET(
@@ -10,13 +11,9 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
-    const serviceItem = await db.select().from(services).where(eq(services.id, parsedId)).limit(1);
+    const serviceItem = await db.select().from(services).where(eq(services.id, id)).limit(1);
 
     if (serviceItem.length === 0) {
       return NextResponse.json({ error: 'Service not found' }, { status: 404 });
@@ -36,11 +33,7 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
     const body = await request.json();
     const { title, description, icon, features } = body;
@@ -53,7 +46,7 @@ export async function PUT(
         icon,
         features: JSON.stringify(features),
       })
-      .where(eq(services.id, parsedId))
+      .where(eq(services.id, id))
       .returning();
 
     if (updatedItem.length === 0) {
@@ -74,15 +67,11 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
     const deletedItem = await db
       .delete(services)
-      .where(eq(services.id, parsedId))
+      .where(eq(services.id, id))
       .returning();
 
     if (deletedItem.length === 0) {

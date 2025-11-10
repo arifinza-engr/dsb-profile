@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Swal from "sweetalert2";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
@@ -225,9 +226,27 @@ export default function AdminPage() {
           slug: "",
         });
         loadNews();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berita berhasil ditambahkan",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menambahkan berita",
+        });
       }
     } catch (error) {
       console.error("Error creating news:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menambahkan berita",
+      });
     }
   };
 
@@ -253,23 +272,71 @@ export default function AdminPage() {
           slug: "",
         });
         loadNews();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berita berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui berita",
+        });
       }
     } catch (error) {
       console.error("Error updating news:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui berita",
+      });
     }
   };
 
   const handleDeleteNews = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this news item?")) return;
+    const result = await Swal.fire({
+      title: "Apakah Anda yakin?",
+      text: "Data berita yang dihapus tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
     try {
       const response = await fetch(`/api/news/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
         loadNews();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berita berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menghapus berita",
+        });
       }
     } catch (error) {
       console.error("Error deleting news:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menghapus berita",
+      });
     }
   };
 
@@ -342,9 +409,27 @@ export default function AdminPage() {
           date: "",
         });
         loadGallery();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Item galeri berhasil ditambahkan",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menambahkan item galeri",
+        });
       }
     } catch (error) {
       console.error("Error creating gallery item:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menambahkan item galeri",
+      });
     }
   };
 
@@ -368,23 +453,71 @@ export default function AdminPage() {
           date: "",
         });
         loadGallery();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Item galeri berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui item galeri",
+        });
       }
     } catch (error) {
       console.error("Error updating gallery item:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui item galeri",
+      });
     }
   };
 
   const handleDeleteGallery = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this gallery item?")) return;
+    const result = await Swal.fire({
+      title: "Apakah Anda yakin?",
+      text: "Data galeri yang dihapus tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
     try {
       const response = await fetch(`/api/gallery/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
         loadGallery();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Item galeri berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menghapus item galeri",
+        });
       }
     } catch (error) {
       console.error("Error deleting gallery item:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menghapus item galeri",
+      });
     }
   };
 
@@ -457,13 +590,27 @@ export default function AdminPage() {
       });
       if (response.ok) {
         loadCompany();
-        alert("Company information updated successfully!");
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Informasi perusahaan berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       } else {
-        alert("Failed to update company information");
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui informasi perusahaan",
+        });
       }
     } catch (error) {
       console.error("Error updating company:", error);
-      alert("Error updating company information");
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui informasi perusahaan",
+      });
     }
   };
 
@@ -505,9 +652,27 @@ export default function AdminPage() {
           features: [],
         });
         loadServices();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Layanan berhasil ditambahkan",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menambahkan layanan",
+        });
       }
     } catch (error) {
       console.error("Error creating service:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menambahkan layanan",
+      });
     }
   };
 
@@ -529,23 +694,71 @@ export default function AdminPage() {
           features: [],
         });
         loadServices();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Layanan berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui layanan",
+        });
       }
     } catch (error) {
       console.error("Error updating service:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui layanan",
+      });
     }
   };
 
   const handleDeleteService = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this service?")) return;
+    const result = await Swal.fire({
+      title: "Apakah Anda yakin?",
+      text: "Data layanan yang dihapus tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
     try {
       const response = await fetch(`/api/services/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
         loadServices();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Layanan berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menghapus layanan",
+        });
       }
     } catch (error) {
       console.error("Error deleting service:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menghapus layanan",
+      });
     }
   };
 
@@ -614,9 +827,27 @@ export default function AdminPage() {
           country: "",
         });
         loadJobs();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Lowongan kerja berhasil ditambahkan",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menambahkan lowongan kerja",
+        });
       }
     } catch (error) {
       console.error("Error creating job:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menambahkan lowongan kerja",
+      });
     }
   };
 
@@ -644,23 +875,71 @@ export default function AdminPage() {
           country: "",
         });
         loadJobs();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Lowongan kerja berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui lowongan kerja",
+        });
       }
     } catch (error) {
       console.error("Error updating job:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui lowongan kerja",
+      });
     }
   };
 
   const handleDeleteJob = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this job vacancy?")) return;
+    const result = await Swal.fire({
+      title: "Apakah Anda yakin?",
+      text: "Data lowongan kerja yang dihapus tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
     try {
       const response = await fetch(`/api/jobs/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
         loadJobs();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Lowongan kerja berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menghapus lowongan kerja",
+        });
       }
     } catch (error) {
       console.error("Error deleting job:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menghapus lowongan kerja",
+      });
     }
   };
 
@@ -735,9 +1014,27 @@ export default function AdminPage() {
           website: "",
         });
         loadPartners();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Mitra berhasil ditambahkan",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menambahkan mitra",
+        });
       }
     } catch (error) {
       console.error("Error creating partner:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menambahkan mitra",
+      });
     }
   };
 
@@ -759,23 +1056,71 @@ export default function AdminPage() {
           website: "",
         });
         loadPartners();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Mitra berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui mitra",
+        });
       }
     } catch (error) {
       console.error("Error updating partner:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui mitra",
+      });
     }
   };
 
   const handleDeletePartner = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this partner?")) return;
+    const result = await Swal.fire({
+      title: "Apakah Anda yakin?",
+      text: "Data mitra yang dihapus tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
     try {
       const response = await fetch(`/api/partners/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
         loadPartners();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Mitra berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menghapus mitra",
+        });
       }
     } catch (error) {
       console.error("Error deleting partner:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menghapus mitra",
+      });
     }
   };
 
@@ -842,9 +1187,27 @@ export default function AdminPage() {
           shipType: "",
         });
         loadTestimonials();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Testimonial berhasil ditambahkan",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menambahkan testimonial",
+        });
       }
     } catch (error) {
       console.error("Error creating testimonial:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menambahkan testimonial",
+      });
     }
   };
 
@@ -873,23 +1236,71 @@ export default function AdminPage() {
           shipType: "",
         });
         loadTestimonials();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Testimonial berhasil diperbarui",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal memperbarui testimonial",
+        });
       }
     } catch (error) {
       console.error("Error updating testimonial:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat memperbarui testimonial",
+      });
     }
   };
 
   const handleDeleteTestimonial = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this testimonial?")) return;
+    const result = await Swal.fire({
+      title: "Apakah Anda yakin?",
+      text: "Data testimonial yang dihapus tidak dapat dikembalikan!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Ya, Hapus!",
+      cancelButtonText: "Batal",
+    });
+
+    if (!result.isConfirmed) return;
+
     try {
       const response = await fetch(`/api/testimonials/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
         loadTestimonials();
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Testimonial berhasil dihapus",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal!",
+          text: "Gagal menghapus testimonial",
+        });
       }
     } catch (error) {
       console.error("Error deleting testimonial:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Terjadi kesalahan saat menghapus testimonial",
+      });
     }
   };
 
@@ -988,7 +1399,7 @@ export default function AdminPage() {
       <div
         className={`${
           sidebarOpen ? "w-72" : "w-20"
-        } bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 transition-all duration-300 fixed md:relative h-screen overflow-y-auto z-40 shadow-xl`}
+        } bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 transition-all duration-300 fixed md:relative h-screen overflow-y-auto z-40 shadow-xl pt-17`}
       >
         {/* Logo */}
         <div className="p-6 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
@@ -1136,7 +1547,7 @@ export default function AdminPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 overflow-auto pt-14">
         {/* Header */}
         <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-700 p-6 sticky top-0 z-30">
           <div className="flex justify-between items-center">
@@ -2066,7 +2477,9 @@ export default function AdminPage() {
                       </label>
                       <div className="space-y-4">
                         <FileUpload
-                          onUpload={(url) => setCompanyForm({ ...companyForm, logo: url })}
+                          onUpload={(url) =>
+                            setCompanyForm({ ...companyForm, logo: url })
+                          }
                           currentImage={companyForm.logo}
                           className="mb-4"
                         />
@@ -2192,9 +2605,9 @@ export default function AdminPage() {
       {/* News Modal */}
       {showNewsModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 max-w-2xl w-full max-h-[90vh] overflow-hidden">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 max-w-2xl w-full max-h-[90vh] flex flex-col">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700">
+            <div className="flex items-center justify-between p-6 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
                   <FileText className="w-5 h-5 text-blue-600 dark:text-blue-400" />
@@ -2219,7 +2632,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
+            <div className="p-6 overflow-y-auto flex-1">
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
@@ -2324,7 +2737,9 @@ export default function AdminPage() {
                   </label>
                   <div className="space-y-4">
                     <FileUpload
-                      onUpload={(url) => setNewsForm({ ...newsForm, image: url })}
+                      onUpload={(url) =>
+                        setNewsForm({ ...newsForm, image: url })
+                      }
                       currentImage={newsForm.image}
                       className="mb-4"
                     />
@@ -2369,7 +2784,7 @@ export default function AdminPage() {
             </div>
 
             {/* Modal Footer */}
-            <div className="flex justify-end gap-3 p-6 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50">
+            <div className="flex justify-end gap-3 p-6 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-700/50 flex-shrink-0">
               <button
                 onClick={() => setShowNewsModal(false)}
                 className="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors font-medium"
@@ -2486,7 +2901,9 @@ export default function AdminPage() {
                 </label>
                 <div className="space-y-4">
                   <FileUpload
-                    onUpload={(url) => setGalleryForm({ ...galleryForm, image: url })}
+                    onUpload={(url) =>
+                      setGalleryForm({ ...galleryForm, image: url })
+                    }
                     currentImage={galleryForm.image}
                     className="mb-4"
                   />
@@ -2498,7 +2915,10 @@ export default function AdminPage() {
                       type="url"
                       value={galleryForm.image}
                       onChange={(e) =>
-                        setGalleryForm({ ...galleryForm, image: e.target.value })
+                        setGalleryForm({
+                          ...galleryForm,
+                          image: e.target.value,
+                        })
                       }
                       className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-foreground focus:ring-2 focus:ring-primary outline-none"
                       placeholder="https://example.com/image.jpg"
@@ -2921,7 +3341,9 @@ export default function AdminPage() {
                 </label>
                 <div className="space-y-4">
                   <FileUpload
-                    onUpload={(url) => setPartnersForm({ ...partnersForm, logo: url })}
+                    onUpload={(url) =>
+                      setPartnersForm({ ...partnersForm, logo: url })
+                    }
                     currentImage={partnersForm.logo}
                     className="mb-4"
                   />
@@ -2933,7 +3355,10 @@ export default function AdminPage() {
                       type="url"
                       value={partnersForm.logo}
                       onChange={(e) =>
-                        setPartnersForm({ ...partnersForm, logo: e.target.value })
+                        setPartnersForm({
+                          ...partnersForm,
+                          logo: e.target.value,
+                        })
                       }
                       className="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-foreground focus:ring-2 focus:ring-primary outline-none"
                       placeholder="https://example.com/logo.png"
@@ -3087,7 +3512,9 @@ export default function AdminPage() {
                 </label>
                 <div className="space-y-4">
                   <FileUpload
-                    onUpload={(url) => setTestimonialsForm({ ...testimonialsForm, image: url })}
+                    onUpload={(url) =>
+                      setTestimonialsForm({ ...testimonialsForm, image: url })
+                    }
                     currentImage={testimonialsForm.image}
                     className="mb-4"
                   />

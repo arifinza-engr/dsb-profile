@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { news } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { isUUID } from 'validator';
 
 // GET /api/news/[id] - Get single news item
 export async function GET(
@@ -9,9 +10,8 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id: paramId } = await params;
-    const id = parseInt(paramId);
-    if (isNaN(id)) {
+    const { id } = await params;
+    if (!isUUID(id)) {
       return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
     }
 
@@ -34,9 +34,8 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id: paramId } = await params;
-    const id = parseInt(paramId);
-    if (isNaN(id)) {
+    const { id } = await params;
+    if (!isUUID(id)) {
       return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
     }
 
@@ -92,9 +91,8 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id: paramId } = await params;
-    const id = parseInt(paramId);
-    if (isNaN(id)) {
+    const { id } = await params;
+    if (!isUUID(id)) {
       return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
     }
 

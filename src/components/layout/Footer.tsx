@@ -7,24 +7,25 @@ import {
   FaXTwitter,
   FaTiktok,
 } from "react-icons/fa6";
-import {
-  COMPANY_NAME,
-  COMPANY_LOGO,
-  NAVIGATION,
-} from "@/lib/constants";
+import { COMPANY_NAME, COMPANY_LOGO, NAVIGATION } from "@/lib/constants";
 import { getPartners } from "@/lib/cms";
 import { Partner } from "@/lib/types";
 
 async function getCompanyData() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/company`, {
-      cache: 'no-store'
-    });
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+      }/api/company`,
+      {
+        cache: "no-store",
+      }
+    );
     if (response.ok) {
       return await response.json();
     }
   } catch (error) {
-    console.error('Error fetching company data:', error);
+    console.error("Error fetching company data:", error);
   }
   return null;
 }
@@ -33,7 +34,7 @@ async function getPartnersData(): Promise<Partner[]> {
   try {
     return await getPartners();
   } catch (error) {
-    console.error('Error fetching partners data:', error);
+    console.error("Error fetching partners data:", error);
     return [];
   }
 }
@@ -68,24 +69,32 @@ export async function Footer() {
             <div className="flex gap-3">
               <a
                 href="#"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 bg-blue-700 hover:bg-blue-800 rounded-lg flex items-center justify-center transition-colors"
               >
                 <FaFacebookF className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/pt.dutasamuderabahari/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 bg-pink-500 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
               >
                 <FaInstagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 bg-black hover:bg-gray-900 rounded-lg flex items-center justify-center transition-colors"
               >
                 <FaXTwitter className="w-5 h-5" />
               </a>
               <a
                 href="#"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-9 h-9 bg-black hover:bg-gray-900 rounded-lg flex items-center justify-center transition-colors"
               >
                 <FaTiktok className="w-5 h-5 text-white" />
@@ -155,7 +164,10 @@ export async function Footer() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                <span>{companyData?.address || "Jl. Pelabuhan No. 123, Jakarta 14120, Indonesia"}</span>
+                <span>
+                  {companyData?.address ||
+                    "Jl. Pelabuhan No. 123, Jakarta 14120, Indonesia"}
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-blue-400 flex-shrink-0" />
@@ -169,7 +181,9 @@ export async function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-400 flex-shrink-0" />
                 <a
-                  href={`mailto:${companyData?.email || "info@dutasamudera.com"}`}
+                  href={`mailto:${
+                    companyData?.email || "info@dutasamudera.com"
+                  }`}
                   className="hover:text-white transition-colors"
                 >
                   {companyData?.email || "info@dutasamudera.com"}
@@ -182,26 +196,39 @@ export async function Footer() {
         {/* Partners Section */}
         <div className="mt-8 pt-8 border-t border-gray-700">
           <h4 className="font-bold text-lg mb-4 text-center">Mitra Kami</h4>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {partners.map((partner: Partner) => (
-              <div
-                key={partner.id}
-                className="flex flex-col items-center space-y-2"
-              >
-                <div className="w-16 h-16 bg-white rounded-lg p-2 flex items-center justify-center">
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    width={48}
-                    height={48}
-                    className="object-contain"
-                  />
-                </div>
-                <span className="text-xs text-gray-300 text-center max-w-[100px]">
-                  {partner.name}
-                </span>
-              </div>
-            ))}
+          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto">
+            {partners
+              .sort((a, b) => {
+                // Urutkan: Kementerian Perhubungan, Asosiasi Pekerja Perikanan Indonesia, Kementerian Ketenagakerjaan
+                const order = [
+                  "Kementerian Perhubungan",
+                  "Asosiasi Pekerja Perikanan Indonesia",
+                  "Kementerian Ketenagakerjaan"
+                ];
+                return order.indexOf(a.name) - order.indexOf(b.name);
+              })
+              .map((partner: Partner) => (
+                <a
+                  key={partner.id}
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center space-y-2 hover:opacity-80 transition-opacity"
+                >
+                  <div className="w-16 h-16 bg-white rounded-lg p-2 flex items-center justify-center">
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-xs text-gray-300 text-center max-w-[100px]">
+                    {partner.name}
+                  </span>
+                </a>
+              ))}
           </div>
         </div>
 

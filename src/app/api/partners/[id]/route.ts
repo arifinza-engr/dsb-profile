@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/lib/db';
 import { partners } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import { isUUID } from 'validator';
 
 // GET /api/partners/[id] - Get single partner
 export async function GET(
@@ -10,13 +11,9 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
-    const partnerItem = await db.select().from(partners).where(eq(partners.id, parsedId)).limit(1);
+    const partnerItem = await db.select().from(partners).where(eq(partners.id, id)).limit(1);
 
     if (partnerItem.length === 0) {
       return NextResponse.json({ error: 'Partner not found' }, { status: 404 });
@@ -36,11 +33,7 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
     const body = await request.json();
     const { name, description, logo, website } = body;
@@ -53,7 +46,7 @@ export async function PUT(
         logo,
         website,
       })
-      .where(eq(partners.id, parsedId))
+      .where(eq(partners.id, id))
       .returning();
 
     if (updatedItem.length === 0) {
@@ -74,15 +67,11 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    if (!id) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return NextResponse.json({ error: 'Invalid ID' }, { status: 400 });
-    }
+    if (!id || !isUUID(id)) return NextResponse.json({ error: "Invalid or missing ID" }, { status: 400 });
 
     const deletedItem = await db
       .delete(partners)
-      .where(eq(partners.id, parsedId))
+      .where(eq(partners.id, id))
       .returning();
 
     if (deletedItem.length === 0) {

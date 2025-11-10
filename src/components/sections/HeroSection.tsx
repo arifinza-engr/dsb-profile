@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Anchor } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface HeroSectionProps {
@@ -84,14 +84,16 @@ export function HeroSection({
 
       {/* Content */}
       <div className="relative z-20 container-maritime text-center text-white space-y-8">
-        {/* Icon */}
-        {showAnchor && (
-          <div className="flex justify-center">
-            <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
-              <Anchor className="w-8 h-8 text-white animate-bounce" />
-            </div>
+        {/* Logo */}
+        <div className="flex justify-center">
+          <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 overflow-hidden">
+            <img
+              src="/Image/logo.png"
+              alt="PT. Duta Samudera Bahari Logo"
+              className="w-16 h-16 object-contain"
+            />
           </div>
-        )}
+        </div>
 
         {/* Title */}
         <div className="space-y-4">

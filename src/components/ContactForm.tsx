@@ -30,16 +30,23 @@ export default function ContactForm() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Construct mailto URL
+      const companyEmail = 'info@dutasamudera.com'; // or get from env if needed
+      const subject = encodeURIComponent(`Contact Form: ${formData.subject}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'Not provided'}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`
+      );
+      const mailtoUrl = `mailto:${companyEmail}?subject=${subject}&body=${body}`;
 
-      // In a real app, you'd send this to an API endpoint
-      console.log("Form submitted:", formData);
+      console.log('Mailto URL:', mailtoUrl); // Debug log
+
+      // Open email client
+      window.open(mailtoUrl, '_blank');
 
       setSubmitStatus("success");
       setFormData({
@@ -55,6 +62,7 @@ export default function ContactForm() {
         setSubmitStatus("idle");
       }, 3000);
     } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmitStatus("error");
       setTimeout(() => {
         setSubmitStatus("idle");
@@ -179,8 +187,7 @@ export default function ContactForm() {
         {/* Status Messages */}
         {submitStatus === "success" && (
           <div className="p-4 bg-green-100 dark:bg-green-900 border border-green-400 text-green-700 dark:text-green-200 rounded-lg">
-            ✓ Pesan Anda telah dikirim berhasil! Kami akan menghubungi
-            Anda segera.
+            ✓ Email client terbuka dengan pesan Anda. Kirim email untuk mengirim pesan ke perusahaan.
           </div>
         )}
 
